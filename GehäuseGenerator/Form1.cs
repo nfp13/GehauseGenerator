@@ -28,17 +28,17 @@ namespace GehäuseGenerator
                 if (uiMode == "light")
                 {
                     btnchangemode.Text = "Dark Mode";
-                    lblueberschrift1.Text = "Light Mode";
                     this.ForeColor = Color.FromArgb(47, 54, 64);
                     this.BackColor = Color.FromArgb(245, 246, 250);
+                    pnlleiste.BackColor = Color.FromArgb(231, 231, 231);
                     ConfigurationManager.AppSettings[key] = "dark";
                 }
                 else
                 {
                     btnchangemode.Text = "Light Mode";
-                    lblueberschrift1.Text = "Dark Mode";
                     this.ForeColor = Color.FromArgb(245, 246, 250);
-                    this.BackColor = Color.FromArgb(47, 54, 64);
+                    this.BackColor = Color.FromArgb(29, 29, 29);
+                    pnlleiste.BackColor = Color.FromArgb(49, 49, 49);
                     ConfigurationManager.AppSettings[key] = "light";
                 }
             }

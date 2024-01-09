@@ -30,9 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnchangemode = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.weiter = new System.Windows.Forms.Button();
+            this.pnlleiste = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -52,8 +50,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -63,17 +59,17 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.pnlleiste.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnchangemode);
-            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.pnlleiste);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label13);
@@ -92,7 +88,7 @@
             // 
             this.btnchangemode.AutoSize = true;
             this.btnchangemode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnchangemode.Location = new System.Drawing.Point(3, 329);
+            this.btnchangemode.Location = new System.Drawing.Point(313, 8);
             this.btnchangemode.Name = "btnchangemode";
             this.btnchangemode.Size = new System.Drawing.Size(75, 25);
             this.btnchangemode.TabIndex = 14;
@@ -100,33 +96,16 @@
             this.btnchangemode.UseVisualStyleBackColor = true;
             this.btnchangemode.Click += new System.EventHandler(this.btnchangemode_Click);
             // 
-            // panel3
+            // pnlleiste
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Controls.Add(this.weiter);
-            this.panel3.Location = new System.Drawing.Point(0, 360);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(700, 40);
-            this.panel3.TabIndex = 11;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(574, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(50, 20);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "zurück";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // weiter
-            // 
-            this.weiter.Location = new System.Drawing.Point(630, 10);
-            this.weiter.Name = "weiter";
-            this.weiter.Size = new System.Drawing.Size(50, 20);
-            this.weiter.TabIndex = 14;
-            this.weiter.Text = "weiter";
-            this.weiter.UseVisualStyleBackColor = true;
+            this.pnlleiste.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlleiste.Controls.Add(this.btnchangemode);
+            this.pnlleiste.Controls.Add(this.button6);
+            this.pnlleiste.Controls.Add(this.button5);
+            this.pnlleiste.Location = new System.Drawing.Point(0, 360);
+            this.pnlleiste.Name = "pnlleiste";
+            this.pnlleiste.Size = new System.Drawing.Size(700, 40);
+            this.pnlleiste.TabIndex = 11;
             // 
             // label15
             // 
@@ -306,31 +285,11 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel5.Controls.Add(this.button3);
-            this.panel5.Controls.Add(this.button4);
+            this.panel5.BackColor = System.Drawing.SystemColors.Control;
             this.panel5.Location = new System.Drawing.Point(0, 360);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(700, 40);
             this.panel5.TabIndex = 11;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(574, 10);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(50, 20);
-            this.button3.TabIndex = 15;
-            this.button3.Text = "zurück";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(630, 10);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(50, 20);
-            this.button4.TabIndex = 14;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // label16
             // 
@@ -414,6 +373,28 @@
             this.label24.TabIndex = 1;
             this.label24.Text = "Datei hochladen:";
             // 
+            // button5
+            // 
+            this.button5.AutoSize = true;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Location = new System.Drawing.Point(541, 8);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 25);
+            this.button5.TabIndex = 15;
+            this.button5.Text = "zurück";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.AutoSize = true;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Location = new System.Drawing.Point(622, 8);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 25);
+            this.button6.TabIndex = 15;
+            this.button6.Text = "weiter";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -427,12 +408,12 @@
             this.Text = "Platinen Gehäusebox";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel3.ResumeLayout(false);
+            this.pnlleiste.ResumeLayout(false);
+            this.pnlleiste.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -455,14 +436,10 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlleiste;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button weiter;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
@@ -473,6 +450,8 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button btnchangemode;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }
 

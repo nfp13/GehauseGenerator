@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -82,6 +86,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label28);
+            this.panel1.Controls.Add(this.label27);
+            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.comboBox1);
@@ -98,6 +106,40 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(700, 360);
             this.panel1.TabIndex = 1;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(626, 322);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(34, 13);
+            this.label28.TabIndex = 20;
+            this.label28.Text = "in mm";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(626, 294);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(34, 13);
+            this.label27.TabIndex = 19;
+            this.label27.Text = "in mm";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(509, 315);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 18;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(509, 289);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 17;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // button1
             // 
@@ -167,7 +209,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 177);
+            this.label4.Location = new System.Drawing.Point(30, 271);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(120, 13);
             this.label4.TabIndex = 9;
@@ -228,7 +270,7 @@
             this.btnchangemode.Name = "btnchangemode";
             this.btnchangemode.Size = new System.Drawing.Size(75, 25);
             this.btnchangemode.TabIndex = 14;
-            this.btnchangemode.Text = "button5";
+            this.btnchangemode.Text = "Mode";
             this.btnchangemode.UseVisualStyleBackColor = true;
             this.btnchangemode.Click += new System.EventHandler(this.btnchangemode_Click);
             // 
@@ -270,7 +312,7 @@
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label20);
             this.panel2.Controls.Add(this.label21);
-            this.panel2.Location = new System.Drawing.Point(3, 58);
+            this.panel2.Location = new System.Drawing.Point(3, 47);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(700, 360);
             this.panel2.TabIndex = 17;
@@ -400,7 +442,7 @@
             this.panel3.Controls.Add(this.label24);
             this.panel3.Controls.Add(this.label25);
             this.panel3.Controls.Add(this.label26);
-            this.panel3.Location = new System.Drawing.Point(716, 30);
+            this.panel3.Location = new System.Drawing.Point(716, 12);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(700, 360);
             this.panel3.TabIndex = 18;
@@ -586,6 +628,10 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 

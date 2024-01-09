@@ -29,12 +29,19 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.btnchangemode = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.weiter = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblueberschrift1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -43,69 +50,120 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
-            this.weiter = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnchangemode);
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.lblueberschrift1);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(9, 9);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(700, 400);
             this.panel1.TabIndex = 1;
             // 
-            // label1
+            // btnchangemode
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Datei hochladen:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.btnchangemode.AutoSize = true;
+            this.btnchangemode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnchangemode.Location = new System.Drawing.Point(3, 329);
+            this.btnchangemode.Name = "btnchangemode";
+            this.btnchangemode.Size = new System.Drawing.Size(75, 25);
+            this.btnchangemode.TabIndex = 14;
+            this.btnchangemode.Text = "button5";
+            this.btnchangemode.UseVisualStyleBackColor = true;
+            this.btnchangemode.Click += new System.EventHandler(this.btnchangemode_Click);
             // 
-            // label3
+            // panel3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(41, 74);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Board auswählen:";
+            this.panel3.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.weiter);
+            this.panel3.Location = new System.Drawing.Point(0, 360);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(700, 40);
+            this.panel3.TabIndex = 11;
             // 
-            // label5
+            // button1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(41, 100);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(118, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Anschlüsse auswählen:";
+            this.button1.Location = new System.Drawing.Point(574, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(50, 20);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "zurück";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // weiter
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(41, 126);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(132, 13);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "LED/ Displays auswählen:";
+            this.weiter.Location = new System.Drawing.Point(630, 10);
+            this.weiter.Name = "weiter";
+            this.weiter.Size = new System.Drawing.Size(50, 20);
+            this.weiter.TabIndex = 14;
+            this.weiter.Text = "weiter";
+            this.weiter.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(338, 169);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(96, 13);
+            this.label15.TabIndex = 13;
+            this.label15.Text = "Grundmaße Board:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(338, 266);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(161, 13);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "Toleranz mechanischer Bauteile:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(338, 237);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(152, 13);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "Toleranz erlektrischer Bauteile:";
+            // 
+            // lblueberschrift1
+            // 
+            this.lblueberschrift1.AutoSize = true;
+            this.lblueberschrift1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblueberschrift1.Location = new System.Drawing.Point(245, 20);
+            this.lblueberschrift1.Name = "lblueberschrift1";
+            this.lblueberschrift1.Size = new System.Drawing.Size(210, 24);
+            this.lblueberschrift1.TabIndex = 10;
+            this.lblueberschrift1.Text = "Platinen Gehäusebox";
             // 
             // label4
             // 
@@ -116,16 +174,41 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Grunddaten auswählen:";
             // 
-            // label11
+            // label7
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(245, 20);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(210, 24);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "Platinen Gehäusebox";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(41, 126);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(132, 13);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "LED/ Displays auswählen:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(41, 100);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(118, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Anschlüsse auswählen:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(41, 74);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Board auswählen:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(41, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Datei hochladen:";
             // 
             // panel2
             // 
@@ -136,7 +219,7 @@
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.button2);
-            this.panel2.Location = new System.Drawing.Point(12, 435);
+            this.panel2.Location = new System.Drawing.Point(9, 418);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(700, 400);
             this.panel2.TabIndex = 11;
@@ -204,77 +287,152 @@
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // label13
+            // panel4
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(338, 237);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(152, 13);
-            this.label13.TabIndex = 11;
-            this.label13.Text = "Toleranz erlektrischer Bauteile:";
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Controls.Add(this.label16);
+            this.panel4.Controls.Add(this.label17);
+            this.panel4.Controls.Add(this.label18);
+            this.panel4.Controls.Add(this.label19);
+            this.panel4.Controls.Add(this.label20);
+            this.panel4.Controls.Add(this.label21);
+            this.panel4.Controls.Add(this.label22);
+            this.panel4.Controls.Add(this.label23);
+            this.panel4.Controls.Add(this.label24);
+            this.panel4.Location = new System.Drawing.Point(715, 9);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(700, 400);
+            this.panel4.TabIndex = 14;
             // 
-            // label14
+            // panel5
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(338, 266);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(161, 13);
-            this.label14.TabIndex = 12;
-            this.label14.Text = "Toleranz mechanischer Bauteile:";
+            this.panel5.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel5.Controls.Add(this.button3);
+            this.panel5.Controls.Add(this.button4);
+            this.panel5.Location = new System.Drawing.Point(0, 360);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(700, 40);
+            this.panel5.TabIndex = 11;
             // 
-            // panel3
+            // button3
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Controls.Add(this.weiter);
-            this.panel3.Location = new System.Drawing.Point(12, 372);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(700, 40);
-            this.panel3.TabIndex = 11;
+            this.button3.Location = new System.Drawing.Point(574, 10);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(50, 20);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "zurück";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // label15
+            // button4
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(338, 169);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(96, 13);
-            this.label15.TabIndex = 13;
-            this.label15.Text = "Grundmaße Board:";
-            this.label15.Click += new System.EventHandler(this.label15_Click);
+            this.button4.Location = new System.Drawing.Point(630, 10);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(50, 20);
+            this.button4.TabIndex = 14;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
             // 
-            // weiter
+            // label16
             // 
-            this.weiter.Location = new System.Drawing.Point(630, 10);
-            this.weiter.Name = "weiter";
-            this.weiter.Size = new System.Drawing.Size(50, 20);
-            this.weiter.TabIndex = 14;
-            this.weiter.Text = "weiter";
-            this.weiter.UseVisualStyleBackColor = true;
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(338, 169);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(96, 13);
+            this.label16.TabIndex = 13;
+            this.label16.Text = "Grundmaße Board:";
             // 
-            // button1
+            // label17
             // 
-            this.button1.Location = new System.Drawing.Point(574, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(50, 20);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "zurück";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(338, 266);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(161, 13);
+            this.label17.TabIndex = 12;
+            this.label17.Text = "Toleranz mechanischer Bauteile:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(338, 237);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(152, 13);
+            this.label18.TabIndex = 11;
+            this.label18.Text = "Toleranz erlektrischer Bauteile:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(245, 20);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(210, 24);
+            this.label19.TabIndex = 10;
+            this.label19.Text = "Platinen Gehäusebox";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(41, 152);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(120, 13);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "Grunddaten auswählen:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(41, 126);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(132, 13);
+            this.label21.TabIndex = 7;
+            this.label21.Text = "LED/ Displays auswählen:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(41, 100);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(118, 13);
+            this.label22.TabIndex = 5;
+            this.label22.Text = "Anschlüsse auswählen:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(41, 74);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(92, 13);
+            this.label23.TabIndex = 3;
+            this.label23.Text = "Board auswählen:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(41, 48);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(88, 13);
+            this.label24.TabIndex = 1;
+            this.label24.Text = "Datei hochladen:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1161, 847);
-            this.Controls.Add(this.panel3);
+            this.ClientSize = new System.Drawing.Size(1426, 847);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Platinen Gehäusebox";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -283,7 +441,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblueberschrift1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
@@ -301,6 +459,20 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button weiter;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button btnchangemode;
     }
 }
 

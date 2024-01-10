@@ -112,7 +112,10 @@ namespace GehäuseGenerator
             }
         }
 
-      
+        private void button4_Click(object sender, EventArgs e)
+        {
+            btnzip.Text = "X";
+        }
     }
             
 }

@@ -21,10 +21,8 @@
         #endregion
 
         #region Constructors
-        public CutOut(string name, int index)
+        public CutOut()
         {
-            Name = name;
-            Index = index;
         }
         #endregion
 

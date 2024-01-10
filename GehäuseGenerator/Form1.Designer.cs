@@ -136,6 +136,7 @@
             // 
             // textBox3
             // 
+            this.textBox3.BackColor = System.Drawing.SystemColors.Control;
             this.textBox3.Location = new System.Drawing.Point(285, 270);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
@@ -187,6 +188,7 @@
             // 
             // textBox2
             // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.Control;
             this.textBox2.Location = new System.Drawing.Point(570, 300);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
@@ -195,6 +197,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
             this.textBox1.Location = new System.Drawing.Point(570, 270);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
@@ -612,9 +615,9 @@
             this.comboBox13.BackColor = System.Drawing.SystemColors.Control;
             this.comboBox13.FormattingEnabled = true;
             this.comboBox13.Items.AddRange(new object[] {
-            "FotoX",
-            "FotoY",
-            "FotoZ"});
+            ".stl\t",
+            ".obj\t",
+            ".stp"});
             this.comboBox13.Location = new System.Drawing.Point(160, 125);
             this.comboBox13.Name = "comboBox13";
             this.comboBox13.Size = new System.Drawing.Size(100, 21);
@@ -642,7 +645,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(20, 275);
+            this.label23.Location = new System.Drawing.Point(20, 175);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(99, 13);
             this.label23.TabIndex = 9;
@@ -679,6 +682,7 @@
             // 
             // textBox4
             // 
+            this.textBox4.BackColor = System.Drawing.SystemColors.Control;
             this.textBox4.Location = new System.Drawing.Point(515, 275);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
@@ -697,7 +701,7 @@
             // 
             this.btnzip.AutoSize = true;
             this.btnzip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnzip.Location = new System.Drawing.Point(160, 270);
+            this.btnzip.Location = new System.Drawing.Point(160, 170);
             this.btnzip.Name = "btnzip";
             this.btnzip.Size = new System.Drawing.Size(25, 25);
             this.btnzip.TabIndex = 27;

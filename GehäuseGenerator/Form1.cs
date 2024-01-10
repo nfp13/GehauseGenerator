@@ -32,10 +32,6 @@ namespace GehäuseGenerator
             status = new Status();
             status.Progressed += new EventHandler(UpdateStatus);
 
-            Type inventorAppType = System.Type.GetTypeFromProgID("Inventor.Application");
-            inventorApp = System.Activator.CreateInstance(inventorAppType) as Inventor.Application;
-            inventorApp.Visible = false;
-
             InitializeComponent();
             InitializeUI("UIMode");
         }
@@ -182,9 +178,22 @@ namespace GehäuseGenerator
             }
         }
 
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            status.Name = "Inventor starting";
+            status.OnProgess();
+
+            Type inventorAppType = System.Type.GetTypeFromProgID("Inventor.Application");
+            inventorApp = System.Activator.CreateInstance(inventorAppType) as Inventor.Application;
+            inventorApp.Visible = false;
+
+            status.Name = "Done";
+            status.OnProgess();
+        }
+
         private void UpdateStatus(object sender, EventArgs e)
         {
-
+            //MessageBox.Show(status.Name);
         }
     }
 }

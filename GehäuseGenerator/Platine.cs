@@ -185,12 +185,12 @@ namespace GehäuseGenerator
                     if (Top.Z <= 0.0)
                     {
                         _CutOut.Top = true;
-                        MessageBox.Show("Oben");
+                        //MessageBox.Show("Oben");
                     }
                     else if (Bottom.Z >= 0.0)
                     {
                         _CutOut.Top = false;
-                        MessageBox.Show("Unten");
+                        //MessageBox.Show("Unten");
                     }
                     else
                     {
@@ -202,6 +202,18 @@ namespace GehäuseGenerator
                     CutOuts.Add(_CutOut);
                 }
             }
+        }
+
+        public void SavePictureAs(string Path)
+        {
+            Inventor.View view = _assemblyDocument.Views[1];
+            Inventor.Camera camera = view.Camera;
+            camera.Perspective = false;
+            camera.ViewOrientationType = ViewOrientationTypeEnum.kIsoTopRightViewOrientation;
+            camera.Fit();
+            camera.Apply();
+            view.Update();
+            camera.SaveAsBitmap(Path, 1080, 1080);
         }
 
         private Inventor.Application _inventorApp;

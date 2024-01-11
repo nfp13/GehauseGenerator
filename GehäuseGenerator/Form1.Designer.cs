@@ -86,6 +86,8 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlleiste.SuspendLayout();
@@ -138,7 +140,7 @@
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox3.Location = new System.Drawing.Point(285, 270);
+            this.textBox3.Location = new System.Drawing.Point(260, 270);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 23;
@@ -151,7 +153,7 @@
             "FotoX",
             "FotoY",
             "FotoZ"});
-            this.comboBox5.Location = new System.Drawing.Point(285, 300);
+            this.comboBox5.Location = new System.Drawing.Point(260, 300);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(100, 21);
             this.comboBox5.TabIndex = 22;
@@ -174,18 +176,18 @@
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(160, 305);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(120, 13);
+            this.label28.Size = new System.Drawing.Size(49, 13);
             this.label28.TabIndex = 20;
-            this.label28.Text = "Grunddaten auswählen:";
+            this.label28.Text = "Schalter:";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(160, 275);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(120, 13);
+            this.label27.Size = new System.Drawing.Size(65, 13);
             this.label27.TabIndex = 19;
-            this.label27.Text = "Grunddaten auswählen:";
+            this.label27.Text = "Akku Maße:";
             // 
             // textBox2
             // 
@@ -323,6 +325,8 @@
             // pnlleiste
             // 
             this.pnlleiste.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlleiste.Controls.Add(this.label16);
+            this.pnlleiste.Controls.Add(this.progressBar1);
             this.pnlleiste.Controls.Add(this.btnchangemode);
             this.pnlleiste.Controls.Add(this.btnweiter);
             this.pnlleiste.Controls.Add(this.btnzurueck);
@@ -387,7 +391,7 @@
             this.panel2.Controls.Add(this.label21);
             this.panel2.Controls.Add(this.label29);
             this.panel2.Controls.Add(this.label30);
-            this.panel2.Location = new System.Drawing.Point(716, 416);
+            this.panel2.Location = new System.Drawing.Point(716, 10);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(700, 360);
             this.panel2.TabIndex = 25;
@@ -588,7 +592,7 @@
             this.panel3.Controls.Add(this.label23);
             this.panel3.Controls.Add(this.label26);
             this.panel3.Controls.Add(this.label33);
-            this.panel3.Location = new System.Drawing.Point(714, 10);
+            this.panel3.Location = new System.Drawing.Point(716, 378);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(700, 360);
             this.panel3.TabIndex = 25;
@@ -712,6 +716,22 @@
             this.label33.TabIndex = 1;
             this.label33.Text = "Speicherort wählen:";
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(20, 10);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(100, 20);
+            this.progressBar1.TabIndex = 16;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(126, 14);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(46, 13);
+            this.label16.TabIndex = 25;
+            this.label16.Text = "Inventor";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -799,6 +819,8 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnzip;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label16;
     }
 }
 

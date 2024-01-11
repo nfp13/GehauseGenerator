@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Microsoft.SqlServer.Server;
+using System.Xml;
 
 
 namespace GehäuseGenerator
@@ -111,7 +112,7 @@ namespace GehäuseGenerator
         {
             char ch = e.KeyChar;
 
-            //  textBox1 = Format(textBox1, "0.00mm");
+              //textBox1= Format(textBox1, "0.00mm");
 
             if (ch == 46 && textBox1.Text.IndexOf('.') != -1)
             {
@@ -129,7 +130,11 @@ namespace GehäuseGenerator
         {
             char ch = e.KeyChar;
 
-            //  textBox2 = Format(textBox2, "0.00mm");
+            //  textBox1 = Format(ch, "0.00mm");
+            //textBox1 = Char.ToString("0.##");
+            //string s = d.ToString("0.##");
+            //formatString += ".00";
+            //textBox2.Text = char.ToString("0.##");
 
             if (ch == 46 && textBox2.Text.IndexOf('.') != -1)
             {

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using Inventor; 
+using Inventor;
+using System;
 
 namespace GehäuseGenerator
 {
@@ -25,7 +26,7 @@ namespace GehäuseGenerator
             foreach (ComponentOccurrence componentOccurrence in _assemblyComponentDefinition.Occurrences)
             {
                 Parts.Add(componentOccurrence.Name);
-                _status.Progress = (CurrentOccurrence * 1.0) / (NumberOfOccurrences * 1.0);
+                _status.Progress = Convert.ToInt16((CurrentOccurrence * 1.0) / (NumberOfOccurrences * 1.0)*100);
                 CurrentOccurrence++;
                 _status.OnProgess();
             }

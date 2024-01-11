@@ -32,6 +32,7 @@ namespace GehäuseGenerator
                 readExcelDia = _wsInsert.Cells[i, 1].Value;
                 i++;
             }
+            i++;
 
             if (_wsInsert.Cells[i, 1].Value >= holeDia)
             {
@@ -56,6 +57,7 @@ namespace GehäuseGenerator
                 readExcelDia = _wsScrew.Cells[i, 1].Value;
                 i++;
             }
+            i++;
 
             if (_wsScrew.Cells[i, 1].Value >= holeDia)
             {
@@ -79,6 +81,7 @@ namespace GehäuseGenerator
                 readExcelDia = _wsScrew.Cells[i, 1].Value;
                 i++;
             }
+            i++;
 
             if (_wsScrew.Cells[i, 1].Value >= holeDia)
             {
@@ -102,6 +105,7 @@ namespace GehäuseGenerator
                 readExcelDia = _wsScrew.Cells[i, 1].Value;
                 i++;
             }
+            i++;
 
             if (_wsScrew.Cells[i, 1].Value >= holeDia)
             {

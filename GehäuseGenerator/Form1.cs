@@ -111,17 +111,27 @@ namespace GehäuseGenerator
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
+            //char ch = e.KeyChar;
 
-              //textBox1= Format(textBox1, "0.00mm");
+            //textBox1= Format(textBox1, "0.00mm");
 
-            if (ch == 46 && textBox1.Text.IndexOf('.') != -1)
+            //if (ch == 46 && textBox1.Text.IndexOf('.') != -1)
+            //{
+            //e.Handled = true;
+            //return;
+            //}
+
+            //if(!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            //{
+            //e.Handled = true;
+            //}
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&(e.KeyChar != '.'))
             {
                 e.Handled = true;
-                return;
             }
 
-            if(!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
@@ -208,9 +218,13 @@ namespace GehäuseGenerator
 
         }
 
+    
+
         private void UpdateStatus(object sender, EventArgs e)
         {
             //MessageBox.Show(status.Name);
+            label16.Text = status.Name;
+            progressBar1.Value = status.Progress; 
         }
     }
 }

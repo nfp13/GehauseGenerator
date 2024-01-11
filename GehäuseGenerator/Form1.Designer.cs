@@ -155,6 +155,7 @@
             // comboBox6
             // 
             this.comboBox6.BackColor = System.Drawing.SystemColors.Control;
+            this.comboBox6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.comboBox6.FormattingEnabled = true;
             this.comboBox6.Items.AddRange(new object[] {
             "FotoX",
@@ -176,6 +177,7 @@
             // comboBox5
             // 
             this.comboBox5.BackColor = System.Drawing.SystemColors.Control;
+            this.comboBox5.ForeColor = System.Drawing.SystemColors.ControlText;
             this.comboBox5.FormattingEnabled = true;
             this.comboBox5.Items.AddRange(new object[] {
             "FotoX",
@@ -189,6 +191,7 @@
             // comboBox4
             // 
             this.comboBox4.BackColor = System.Drawing.SystemColors.Control;
+            this.comboBox4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Items.AddRange(new object[] {
             "FotoX",
@@ -258,6 +261,7 @@
             // cmbBoard
             // 
             this.cmbBoard.BackColor = System.Drawing.SystemColors.Control;
+            this.cmbBoard.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cmbBoard.FormattingEnabled = true;
             this.cmbBoard.Items.AddRange(new object[] {
             "FotoX",
@@ -764,7 +768,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1412, 790);
+            this.ClientSize = new System.Drawing.Size(1297, 629);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

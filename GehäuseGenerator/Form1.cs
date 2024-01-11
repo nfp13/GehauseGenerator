@@ -196,6 +196,16 @@ namespace GehäuseGenerator
             status.OnProgess();
         }
 
+        private void btnAddCon(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddLed(object sender, EventArgs e)
+        {
+
+        }
+
         private void UpdateStatus(object sender, EventArgs e)
         {
             //MessageBox.Show(status.Name);

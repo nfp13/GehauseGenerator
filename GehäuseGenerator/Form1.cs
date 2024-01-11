@@ -192,6 +192,8 @@ namespace GehäuseGenerator
                 cmbBoard.DataSource = platine.Parts;
                 comboBox4.DataSource = platine.Parts;
                 textBox5.Text = FilePath;
+                
+
 
             }
         }

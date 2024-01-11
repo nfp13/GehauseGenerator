@@ -221,7 +221,10 @@ namespace GehäuseGenerator
 
         }
 
-       
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+
+        }
 
         private void UpdateStatus(object sender, EventArgs e)
         {

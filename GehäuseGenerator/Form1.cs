@@ -130,7 +130,6 @@ namespace GehäuseGenerator
                 e.Handled = true;
             }
 
-            // only allow one decimal point
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
@@ -192,6 +191,8 @@ namespace GehäuseGenerator
                 platine.Analyze();
                 cmbBoard.DataSource = platine.Parts;
                 comboBox4.DataSource = platine.Parts;
+                textBox5.Text = FilePath;
+
             }
         }
 
@@ -218,7 +219,7 @@ namespace GehäuseGenerator
 
         }
 
-    
+       
 
         private void UpdateStatus(object sender, EventArgs e)
         {

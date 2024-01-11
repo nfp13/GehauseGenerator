@@ -8,9 +8,10 @@ namespace GehäuseGenerator
 {
     public class Gehäuse
     {
-        public Gehäuse(Inventor.Application inventorApp, double DW, double TM, double TE, double BP, double LP, double DL, double REP, double HPt, double HPb, double RR, double SKD, double SKH, bool top)
+        public Gehäuse(Inventor.Application inventorApp, Status status, double DW, double TM, double TE, double BP, double LP, double DL, double REP, double HPt, double HPb, double RR, double SKD, double SKH, bool top)
         {
             _inventorApp = inventorApp;
+            _status = status;
             _DW = DW;
             _TM = TM;
             _TE = TE;
@@ -32,15 +33,31 @@ namespace GehäuseGenerator
 
         private void _OpenTemplate()
         {
+            _status.Name = "Opening Gehäuse Template";
+            _status.Progress = 20;
+            _status.OnProgess();
+
+
             string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
             string TemplatePath = string.Format("{0}Resources\\GehauseGenerator_GehauseVorlage.ipt", System.IO.Path.GetFullPath(System.IO.Path.Combine(RunningPath, @"..\..\")));
 
+            _status.Progress = 40;
+            _status.OnProgess();
+
             _partDocument = _inventorApp.Documents.Open(TemplatePath, true) as PartDocument;
             _partComponentDefinition = _partDocument.ComponentDefinition as PartComponentDefinition;
+
+            _status.Name = "Done";
+            _status.Progress = 100;
+            _status.OnProgess();
         }
 
         private void _SetParameters()
         {
+            _status.Name = "Setting Parameters";
+            _status.Progress = 20;
+            _status.OnProgess();
+
             _parameters = _partDocument.ComponentDefinition.Parameters;
 
             _parameters["DW"].Value = _DW;
@@ -67,6 +84,9 @@ namespace GehäuseGenerator
                 extrudeFeature.Suppressed = false;
             }
 
+            _status.Name = "Done";
+            _status.Progress = 100;
+            _status.OnProgess();
         }
 
         public void Save(string FilePath)
@@ -94,8 +114,15 @@ namespace GehäuseGenerator
         private void _AddCutOutsToModel()
         {
             int ZählerCutOuts = 1;
+            int AnzahlCutOuts = _CutOuts.Count;
+
+            _status.Name = "Creating CutOuts";
+
             foreach (CutOut cutOut in _CutOuts)
             {
+                _status.Progress = Convert.ToInt16((ZählerCutOuts * 1.0) / (AnzahlCutOuts * 1.0) * 100);
+                _status.OnProgess();
+
                 Face face;
                 if (cutOut.Connector)
                 {
@@ -338,6 +365,8 @@ namespace GehäuseGenerator
         private Parameters _parameters;
 
         private List<CutOut> _CutOuts = new List<CutOut>();
+
+        private Status _status;
     }
 
 }

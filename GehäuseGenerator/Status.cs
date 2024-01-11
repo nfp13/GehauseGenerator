@@ -5,7 +5,7 @@ namespace GehäuseGenerator
 {
     public class Status
     {
-        public double Progress = 0.0; // 1 -> 100%
+        public int Progress = 0; // 1 -> 100%
 
         public string Name;
 

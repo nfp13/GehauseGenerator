@@ -173,12 +173,14 @@ namespace GehäuseGenerator
 
         private void btnSelFile_Click(object sender, EventArgs e)
         {
+            string FileName = null;
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Title = "Please Select your CircuitBoardModell...";
             openFileDialog.Filter = "Inventor Assembly (*.iam) | *.iam";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 FilePath = openFileDialog.FileName;
+                FileName = openFileDialog.SafeFileName;
             }
 
             if (FilePath == null)
@@ -191,9 +193,7 @@ namespace GehäuseGenerator
                 platine.Analyze();
                 cmbBoard.DataSource = platine.Parts;
                 comboBox4.DataSource = platine.Parts;
-                textBox5.Text = FilePath;
-                
-
+                textBox5.Text = FileName;
 
             }
         }

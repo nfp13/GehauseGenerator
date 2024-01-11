@@ -10,11 +10,20 @@ namespace GehäuseGenerator
     {
         public Platine(Inventor.Application inventorApp, string filePath, Status status)
         {
+            _status = status;
+
+            _status.Name = "Opening Assembly";
+            _status.OnProgess();
+
             _filePath = filePath;
             _inventorApp = inventorApp;
+
             _assemblyDocument = _inventorApp.Documents.Open(_filePath, true) as AssemblyDocument;
             _assemblyComponentDefinition = _assemblyDocument.ComponentDefinition;
-            _status = status;
+
+            _status.Name = "Done";
+            _status.OnProgess();
+
         }
 
         public void Analyze()
@@ -30,10 +39,18 @@ namespace GehäuseGenerator
                 CurrentOccurrence++;
                 _status.OnProgess();
             }
+
+            _status.Name = "Done";
+            _status.OnProgess();
+
         }
 
         public void AnalyzeBoard(string boardOccurrenceName)
         {
+            _status.Name = "Analyzing Board";
+            _status.Progress = 30;
+            _status.OnProgess();
+
             foreach (ComponentOccurrence componentOccurrence in _assemblyComponentDefinition.Occurrences)
             {
                 if (componentOccurrence.Name == boardOccurrenceName)
@@ -65,6 +82,9 @@ namespace GehäuseGenerator
                             PartDocument boardPartDocument;
                             boardPartDocument = componentOccurrence1.Definition.Document;
 
+                            _status.Progress = 60;
+                            _status.OnProgess();
+
                             foreach (HoleFeature holeFeature in boardPartDocument.ComponentDefinition.Features.HoleFeatures)
                             {
                                 HoleDia = holeFeature.HoleDiameter.Value;
@@ -91,6 +111,10 @@ namespace GehäuseGenerator
             CompHeightTop = _MaxPointBoard.VectorTo(_MaxPointGes).Z;
 
             //MessageBox.Show(CompHeightTop.ToString("0.00") + " ; " + CompHeightBottom.ToString());
+
+            _status.Name = "Done";
+            _status.Progress = 100;
+            _status.OnProgess();
 
         }
 

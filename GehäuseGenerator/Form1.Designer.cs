@@ -40,7 +40,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbBoard = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -109,7 +109,7 @@
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.cmbBoard);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label13);
@@ -217,6 +217,7 @@
             this.button1.TabIndex = 16;
             this.button1.Text = "+";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnSelFile_Click);
             // 
             // pictureBox1
             // 
@@ -226,18 +227,18 @@
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
             // 
-            // comboBox1
+            // cmbBoard
             // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmbBoard.BackColor = System.Drawing.SystemColors.Control;
+            this.cmbBoard.FormattingEnabled = true;
+            this.cmbBoard.Items.AddRange(new object[] {
             "FotoX",
             "FotoY",
             "FotoZ"});
-            this.comboBox1.Location = new System.Drawing.Point(160, 125);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 21);
-            this.comboBox1.TabIndex = 14;
+            this.cmbBoard.Location = new System.Drawing.Point(160, 125);
+            this.cmbBoard.Name = "cmbBoard";
+            this.cmbBoard.Size = new System.Drawing.Size(100, 21);
+            this.cmbBoard.TabIndex = 14;
             // 
             // label15
             // 
@@ -743,7 +744,8 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Platinen Gehäusebox";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -774,7 +776,7 @@
         private System.Windows.Forms.Button btnchangemode;
         private System.Windows.Forms.Button btnzurueck;
         private System.Windows.Forms.Button btnweiter;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbBoard;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;

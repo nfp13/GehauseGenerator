@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,16 +11,48 @@ using System.Runtime.InteropServices;
 using Microsoft.SqlServer.Server;
 using System.Xml;
 
+
 namespace GehäuseGenerator
 {
     public partial class Form1 : Form
     {
+        string FilePath = null;
+
+        Platine platine;
+        Status status;
+        Gehäuse gehäuseOben, gehäuseUnten;
+        Normteile normteile;
+
+        Inventor.Application inventorApp;
+
+
         List<Panel> listPanel = new List<Panel>();
         int index;
         public Form1()
         {
+            status = new Status();
+            status.Progressed += new EventHandler(UpdateStatus);
+
             InitializeComponent();
             InitializeUI("UIMode");
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                dynamic result = MessageBox.Show("Soll das Program beendet werden?", "Test Prog", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    inventorApp.Quit();
+                    //normteile.CloseExcel();
+                    System.Windows.Forms.Application.Exit();
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
         }
 
         private void InitializeUI(string key)
@@ -129,8 +160,47 @@ namespace GehäuseGenerator
             }
                 
         }
+
+        private void btnSelFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Please Select your CircuitBoardModell...";
+            openFileDialog.Filter = "Inventor Assembly (*.iam) | *.iam";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                FilePath = openFileDialog.FileName;
+            }
+
+            if (FilePath == null)
+            {
+                MessageBox.Show("No File Selected!");
+            }
+            else
+            {
+                platine = new Platine(inventorApp, FilePath, status);
+                platine.Analyze();
+                cmbBoard.DataSource = platine.Parts;
+            }
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            status.Name = "Inventor starting";
+            status.OnProgess();
+
+            Type inventorAppType = System.Type.GetTypeFromProgID("Inventor.Application");
+            inventorApp = System.Activator.CreateInstance(inventorAppType) as Inventor.Application;
+            inventorApp.Visible = false;
+
+            status.Name = "Done";
+            status.OnProgess();
+        }
+
+        private void UpdateStatus(object sender, EventArgs e)
+        {
+            //MessageBox.Show(status.Name);
+        }
     }
-            
 }
     
 

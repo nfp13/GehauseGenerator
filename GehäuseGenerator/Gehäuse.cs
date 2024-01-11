@@ -80,6 +80,12 @@ namespace GehäuseGenerator
             _partDocument.Close(true);
         }
 
+        public double GetScrewOffset()
+        {
+            double offset = _HPb + _HPt * 0.5 + _TM + _DW - _SKH;
+            return offset;
+        }
+
         public void AddCutOut(CutOut _cutOut)
         {
             _CutOuts.Add(_cutOut);

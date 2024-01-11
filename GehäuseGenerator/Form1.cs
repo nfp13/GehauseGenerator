@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Microsoft.SqlServer.Server;
 using System.Xml;
+using System.Linq;
 
 
 namespace GehäuseGenerator
@@ -180,6 +181,7 @@ namespace GehäuseGenerator
                 platine = new Platine(inventorApp, FilePath, status);
                 platine.Analyze();
                 cmbBoard.DataSource = platine.Parts;
+                comboBox4.DataSource = platine.Parts;
             }
         }
 
@@ -198,7 +200,7 @@ namespace GehäuseGenerator
 
         private void btnAddCon(object sender, EventArgs e)
         {
-
+            platine.AddConnectorToCutOuts(platine.Parts.ElementAt(comboBox4.SelectedIndex));
         }
 
         private void btnAddLed(object sender, EventArgs e)

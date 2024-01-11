@@ -200,6 +200,7 @@ namespace GehäuseGenerator
 
         private void Form1_Shown(object sender, EventArgs e)
         {
+            status.Progress = 0;
             status.Name = "Inventor starting";
             status.OnProgess();
 
@@ -208,6 +209,7 @@ namespace GehäuseGenerator
             inventorApp.Visible = false;
 
             status.Name = "Done";
+            status.Progress = 100;
             status.OnProgess();
         }
 

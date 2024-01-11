@@ -24,19 +24,18 @@ namespace GehäuseGenerator
         public double GetInsertHoleDia(double holeDia)
         {
             int MaxRowInd = _wsInsert.Rows.Count;
-            int i = 3;
+            int i = 2;
             double readExcelDia = 0.0;
 
-            while (i <= MaxRowInd && !(readExcelDia >= holeDia))
+            while (i < MaxRowInd && readExcelDia < holeDia)
             {
-                readExcelDia = _wsInsert.Cells[i, 1].Value;
                 i++;
+                readExcelDia = _wsInsert.Cells[i, 1].Value;
             }
-            i++;
-
-            if (_wsInsert.Cells[i, 1].Value >= holeDia)
+            i--;
+            if (_wsInsert.Cells[i + 1, 1].Value >= holeDia)
             {
-                return (_wsInsert.Cells[i, 2].Value * 0.1);
+                return (_wsInsert.Cells[i, 2].Value);
             }
             else
             {
@@ -49,19 +48,18 @@ namespace GehäuseGenerator
         public double GetScrewHeadDia(double holeDia)
         {
             int MaxRowInd = _wsScrew.Rows.Count;
-            int i = 3;
+            int i = 2;
             double readExcelDia = 0.0;
 
-            while (i <= MaxRowInd && !(readExcelDia >= holeDia))
+            while (i < MaxRowInd && readExcelDia < holeDia)
             {
-                readExcelDia = _wsScrew.Cells[i, 1].Value;
                 i++;
+                readExcelDia = _wsScrew.Cells[i, 1].Value;
             }
-            i++;
-
-            if (_wsScrew.Cells[i, 1].Value >= holeDia)
+            i--;
+            if (_wsScrew.Cells[i + 1, 1].Value >= holeDia)
             {
-                return (_wsScrew.Cells[i, 2].Value * 0.1);
+                return (_wsScrew.Cells[i, 2].Value);
             }
             else
             {
@@ -73,19 +71,18 @@ namespace GehäuseGenerator
         public double GetScrewHeadHeight(double holeDia)
         {
             int MaxRowInd = _wsScrew.Rows.Count;
-            int i = 3;
+            int i = 2;
             double readExcelDia = 0.0;
 
-            while (i <= MaxRowInd && !(readExcelDia >= holeDia))
+            while (i < MaxRowInd && readExcelDia < holeDia)
             {
-                readExcelDia = _wsScrew.Cells[i, 1].Value;
                 i++;
+                readExcelDia = _wsScrew.Cells[i, 1].Value;
             }
-            i++;
-
-            if (_wsScrew.Cells[i, 1].Value >= holeDia)
+            i--;
+            if (_wsScrew.Cells[i + 1, 1].Value >= holeDia)
             {
-                return (_wsScrew.Cells[i, 3].Value * 0.1);
+                return (_wsScrew.Cells[i, 3].Value);
             }
             else
             {
@@ -97,17 +94,16 @@ namespace GehäuseGenerator
         public double GetScrewDiameter(double holeDia)
         {
             int MaxRowInd = _wsScrew.Rows.Count;
-            int i = 3;
+            int i = 2;
             double readExcelDia = 0.0;
 
-            while (i <= MaxRowInd && !(readExcelDia >= holeDia))
+            while (i < MaxRowInd && readExcelDia < holeDia)
             {
-                readExcelDia = _wsScrew.Cells[i, 1].Value;
                 i++;
+                readExcelDia = _wsScrew.Cells[i, 1].Value;
             }
-            i++;
-
-            if (_wsScrew.Cells[i, 1].Value >= holeDia)
+            i--;
+            if (_wsScrew.Cells[i + 1, 1].Value >= holeDia)
             {
                 return (_wsScrew.Cells[i, 1].Value);
             }

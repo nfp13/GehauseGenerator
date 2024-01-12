@@ -160,12 +160,12 @@ namespace GehäuseGenerator
                     if (Top.Z <= 0.0)
                     {
                         _CutOut.Top = true;
-                        MessageBox.Show("Oben");
+                        //MessageBox.Show("Oben");
                     }
                     else if (Bottom.Z >= 0.0)
                     {
                         _CutOut.Top = false;
-                        MessageBox.Show("Unten");
+                        //MessageBox.Show("Unten");
                     }
                     else
                     {

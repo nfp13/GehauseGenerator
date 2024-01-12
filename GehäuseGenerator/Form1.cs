@@ -46,7 +46,7 @@ namespace GehäuseGenerator
                 if (result == DialogResult.Yes)
                 {
                     inventorApp.Quit();
-                    //normteile.CloseExcel();
+                    normteile.CloseExcel();
                     System.Windows.Forms.Application.Exit();
                 }
                 else
@@ -93,6 +93,19 @@ namespace GehäuseGenerator
         {
             if(index<listPanel.Count-1)
                 listPanel[++index].BringToFront();
+
+            if(index == 1)
+            {
+                gehäuseOben = new Gehäuse(inventorApp, status, 0.5, 0.06, 0.1, platine.BoardW, platine.BoardL, normteile.GetInsertHoleDia(platine.HoleDia * 10) * 0.1, platine.CornerRadius, platine.BoardH, platine.CompHeightTop, 0.5, normteile.GetScrewHeadDia(platine.HoleDia * 10) * 0.1, normteile.GetScrewHeadHeight(platine.HoleDia * 10) * 0.1, true);
+                gehäuseUnten = new Gehäuse(inventorApp, status, 0.5, 0.06, 0.1, platine.BoardW, platine.BoardL, normteile.GetScrewDiameter(platine.HoleDia * 10) * 0.1 + 0.06, platine.CornerRadius, platine.BoardH, platine.CompHeightBottom, 0.5, normteile.GetScrewHeadDia(platine.HoleDia * 10) * 0.1, normteile.GetScrewHeadHeight(platine.HoleDia * 10) * 0.1, false);
+                foreach (CutOut cutOut in platine.CutOuts)
+                {
+                    gehäuseOben.AddCutOut(cutOut);
+                    gehäuseUnten.AddCutOut(cutOut);
+                }
+                gehäuseOben.Save("C:\\temp\\GehäuseOben.ipt");
+                gehäuseUnten.Save("C:\\temp\\GehäuseUnten.ipt");
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -193,7 +206,9 @@ namespace GehäuseGenerator
                 platine.Analyze();
                 cmbBoard.DataSource = platine.Parts;
                 comboBox4.DataSource = platine.Parts;
+                comboBox6.DataSource = platine.Parts;
                 textBox5.Text = FileName;
+                platine.SavePictureAs("C:\\temp\\Platine.jpg");
 
             }
         }
@@ -211,6 +226,8 @@ namespace GehäuseGenerator
             status.Name = "Done";
             status.Progress = 100;
             status.OnProgess();
+
+            normteile = new Normteile();
         }
 
         private void btnAddCon(object sender, EventArgs e)
@@ -220,12 +237,17 @@ namespace GehäuseGenerator
 
         private void btnAddLed(object sender, EventArgs e)
         {
-
+            platine.AddLEDToCutOuts(platine.Parts.ElementAt(comboBox4.SelectedIndex));
         }
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnConfirmBoard_Click(object sender, EventArgs e)
+        {
+            platine.AnalyzeBoard(platine.Parts.ElementAt(cmbBoard.SelectedIndex));
         }
 
         private void UpdateStatus(object sender, EventArgs e)

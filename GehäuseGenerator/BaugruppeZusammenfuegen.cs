@@ -183,7 +183,6 @@ namespace GehäuseGenerator
         private AssemblyDocument _assemblyDocument;
 
     }
-
 }
     
 

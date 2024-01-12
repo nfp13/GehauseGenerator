@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using Microsoft.SqlServer.Server;
 using System.Xml;
 using System.Linq;
+//using Inventor;
 
 
 namespace GehäuseGenerator
@@ -48,6 +49,7 @@ namespace GehäuseGenerator
                     inventorApp.Quit();
                     normteile.CloseExcel();
                     System.Windows.Forms.Application.Exit();
+                    //löschen
                 }
                 else
                 {
@@ -103,9 +105,12 @@ namespace GehäuseGenerator
                     gehäuseOben.AddCutOut(cutOut);
                     gehäuseUnten.AddCutOut(cutOut);
                 }
-                gehäuseOben.Save("C:\\temp\\GehäuseOben.ipt");
+                gehäuseOben.Save("C:\\temp\\GehäuseOben.ipt"); 
                 gehäuseUnten.Save("C:\\temp\\GehäuseUnten.ipt");
+
+                //zusammenfügen
             }
+
         }
 
         private void Form1_Load(object sender, EventArgs e)

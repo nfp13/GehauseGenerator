@@ -317,6 +317,35 @@ namespace GehäuseGenerator
             }
         }
 
+        public void ExportToStep(string path)
+        {
+            TranslatorAddIn stepTranslator = (TranslatorAddIn)_inventorApp.ApplicationAddIns.ItemById["{90AF7F40-0C01-11D5-8E83-0010B541CD80}"];
+
+            if (stepTranslator == null)
+            {
+                MessageBox.Show("STEP translator not acvessable");
+                return;
+            }
+
+            TranslationContext translationContext = _inventorApp.TransientObjects.CreateTranslationContext();
+            NameValueMap options = _inventorApp.TransientObjects.CreateNameValueMap();
+
+            if (stepTranslator.HasSaveCopyAsOptions[_partDocument, translationContext, options])
+            {
+                options.Value["ApplicationProtocolType"] = 2;
+                options.Value["Author"] = "GehäuseGenerator";
+
+                translationContext.Type = IOMechanismEnum.kFileBrowseIOMechanism;
+
+                DataMedium dataMedium = _inventorApp.TransientObjects.CreateDataMedium();
+                dataMedium.FileName = path;
+
+                stepTranslator.SaveCopyAs(_partDocument, translationContext, options, dataMedium);
+            }
+        }
+
+
+
         private Face _FindNamedFace(string Name)
         {
             foreach (SurfaceBody body in _partComponentDefinition.SurfaceBodies)

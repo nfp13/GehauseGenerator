@@ -344,6 +344,39 @@ namespace GehäuseGenerator
             }
         }
 
+        public void ExportToObj(string path)
+        {
+            TranslatorAddIn objTranslator = null;
+            foreach (ApplicationAddIn addIn in _inventorApp.ApplicationAddIns)
+            {
+                if (addIn.DisplayName == "Translator: OBJ Export")
+                {
+                    objTranslator = (TranslatorAddIn)addIn;
+                }
+            }
+
+            TranslationContext translationContext = _inventorApp.TransientObjects.CreateTranslationContext();
+            translationContext.Type = IOMechanismEnum.kUnspecifiedIOMechanism;
+            NameValueMap options = _inventorApp.TransientObjects.CreateNameValueMap();
+
+            if (objTranslator.HasSaveCopyAsOptions[_partDocument, translationContext, options])
+            {
+                options.Value["ExportUnits"] = 0;
+                options.Value["Resolution"] = 1;
+                options.Value["SurfaceDeviation"] = 16;
+                options.Value["NormalDeviation"] = 1500;
+                options.Value["MaxEdgeLength"] = 100000;
+                options.Value["AspectRatio"] = 2150;
+                options.Value["ExportFileStructure"] = 0;
+
+                DataMedium dataMedium = _inventorApp.TransientObjects.CreateDataMedium();
+                dataMedium.FileName = path;
+
+                objTranslator.SaveCopyAs(_partDocument, translationContext, options, dataMedium);
+            }
+
+        }
+
 
 
         private Face _FindNamedFace(string Name)

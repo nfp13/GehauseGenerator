@@ -315,6 +315,9 @@ namespace GehäuseGenerator
                 }
                 ZählerCutOuts++;
             }
+
+            _status.Name = "Done";
+            _status.OnProgess();
         }
 
         public void ExportToStep(string path)

@@ -32,6 +32,8 @@ namespace GehäuseGenerator
             int NumberOfOccurrences = _assemblyComponentDefinition.Occurrences.Count;
             int CurrentOccurrence = 1;
             _status.Name = "Finding Parts";
+            _status.Progress = 0;
+            _status.OnProgess();
             foreach (ComponentOccurrence componentOccurrence in _assemblyComponentDefinition.Occurrences)
             {
                 Parts.Add(componentOccurrence.Name);
@@ -48,7 +50,6 @@ namespace GehäuseGenerator
         public void AnalyzeBoard(string boardOccurrenceName)
         {
             _status.Name = "Analyzing Board";
-            _status.Progress = 30;
             _status.OnProgess();
 
             foreach (ComponentOccurrence componentOccurrence in _assemblyComponentDefinition.Occurrences)
@@ -102,6 +103,9 @@ namespace GehäuseGenerator
                     }
 
                 }
+                _status.Progress = 100;
+                _status.Name = "Done";
+                _status.OnProgess();
             }
 
             _MaxPointGes = _assemblyComponentDefinition.RangeBox.MaxPoint;
@@ -113,7 +117,6 @@ namespace GehäuseGenerator
             //MessageBox.Show(CompHeightTop.ToString("0.00") + " ; " + CompHeightBottom.ToString());
 
             _status.Name = "Done";
-            _status.Progress = 100;
             _status.OnProgess();
 
         }

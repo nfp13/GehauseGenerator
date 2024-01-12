@@ -94,7 +94,7 @@ namespace GehäuseGenerator
             if(index<listPanel.Count-1)
                 listPanel[++index].BringToFront();
 
-            if(index == 1)
+            if(true)
             {
                 gehäuseOben = new Gehäuse(inventorApp, status, 0.5, 0.06, 0.1, platine.BoardW, platine.BoardL, normteile.GetInsertHoleDia(platine.HoleDia * 10) * 0.1, platine.CornerRadius, platine.BoardH, platine.CompHeightTop, 0.5, normteile.GetScrewHeadDia(platine.HoleDia * 10) * 0.1, normteile.GetScrewHeadHeight(platine.HoleDia * 10) * 0.1, true);
                 gehäuseUnten = new Gehäuse(inventorApp, status, 0.5, 0.06, 0.1, platine.BoardW, platine.BoardL, normteile.GetScrewDiameter(platine.HoleDia * 10) * 0.1 + 0.06, platine.CornerRadius, platine.BoardH, platine.CompHeightBottom, 0.5, normteile.GetScrewHeadDia(platine.HoleDia * 10) * 0.1, normteile.GetScrewHeadHeight(platine.HoleDia * 10) * 0.1, false);
@@ -215,7 +215,6 @@ namespace GehäuseGenerator
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            status.Progress = 0;
             status.Name = "Inventor starting";
             status.OnProgess();
 
@@ -224,7 +223,6 @@ namespace GehäuseGenerator
             inventorApp.Visible = false;
 
             status.Name = "Done";
-            status.Progress = 100;
             status.OnProgess();
 
             normteile = new Normteile();

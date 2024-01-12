@@ -102,7 +102,7 @@ namespace GehäuseGenerator
 
         public double GetScrewOffset()
         {
-            double offset = _HPb + _HPt * 0.5 + _TM + _DW - _SKH;
+            double offset = _HPb + _HPt * 0.5 + _DW - _SKH;
             return offset;
         }
 

@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using Microsoft.SqlServer.Server;
 using System.Xml;
 using System.Linq;
+//using Microsoft.Office.Interop.Excel;
 //using Inventor;
 
 
@@ -24,6 +25,8 @@ namespace GehäuseGenerator
         Status status;
         Gehäuse gehäuseOben, gehäuseUnten;
         Normteile normteile;
+        BaugruppeZusammenfuegen baugruppeZusammenfuegen;
+        Speichern speichern;
 
         Inventor.Application inventorApp;
 
@@ -49,7 +52,10 @@ namespace GehäuseGenerator
                     inventorApp.Quit();
                     normteile.CloseExcel();
                     System.Windows.Forms.Application.Exit();
+                    
                     //löschen
+                    speichern = new Speichern();
+                    speichern.deleteFiles();
                 }
                 else
                 {
@@ -98,6 +104,7 @@ namespace GehäuseGenerator
 
             if(true)
             {
+                speichern = new Speichern();
                 gehäuseOben = new Gehäuse(inventorApp, status, 0.5, 0.06, 0.1, platine.BoardW, platine.BoardL, normteile.GetInsertHoleDia(platine.HoleDia * 10) * 0.1, platine.CornerRadius, platine.BoardH, platine.CompHeightTop, 0.5, normteile.GetScrewHeadDia(platine.HoleDia * 10) * 0.1, normteile.GetScrewHeadHeight(platine.HoleDia * 10) * 0.1, true);
                 gehäuseUnten = new Gehäuse(inventorApp, status, 0.5, 0.06, 0.1, platine.BoardW, platine.BoardL, normteile.GetScrewDiameter(platine.HoleDia * 10) * 0.1 + 0.06, platine.CornerRadius, platine.BoardH, platine.CompHeightBottom, 0.5, normteile.GetScrewHeadDia(platine.HoleDia * 10) * 0.1, normteile.GetScrewHeadHeight(platine.HoleDia * 10) * 0.1, false);
                 foreach (CutOut cutOut in platine.CutOuts)
@@ -105,10 +112,15 @@ namespace GehäuseGenerator
                     gehäuseOben.AddCutOut(cutOut);
                     gehäuseUnten.AddCutOut(cutOut);
                 }
-                gehäuseOben.Save("C:\\temp\\GehäuseOben.ipt"); 
-                gehäuseUnten.Save("C:\\temp\\GehäuseUnten.ipt");
+                gehäuseOben.Save(speichern.getPathOben()); 
+                gehäuseUnten.Save(speichern.getPathUnten());
 
                 //zusammenfügen
+                baugruppeZusammenfuegen = new BaugruppeZusammenfuegen(inventorApp, FilePath);
+                baugruppeZusammenfuegen.PlatineHinzufügen(FilePath, platine.GetTransformationMatrix());
+                baugruppeZusammenfuegen.UnteresGehäuseHinzufügen(speichern.getPathUnten(), platine.BoardH);
+                baugruppeZusammenfuegen.OberesGehäuseHinzufügen(speichern.getPathOben(), platine.BoardH);
+                baugruppeZusammenfuegen.SchraubenHinzufügen(normteile.GetScrewDiameter(platine.HoleDia * 10), platine.BoardW, platine.BoardL, platine.CornerRadius, gehäuseUnten.GetScrewOffset());
             }
 
         }
@@ -251,6 +263,13 @@ namespace GehäuseGenerator
         private void btnConfirmBoard_Click(object sender, EventArgs e)
         {
             platine.AnalyzeBoard(platine.Parts.ElementAt(cmbBoard.SelectedIndex));
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //export button
+            speichern.exportFiles();
+            baugruppeZusammenfuegen.packAndGo(speichern.getPathBaugruppe(), speichern.folderPathCAD);
         }
 
         private void UpdateStatus(object sender, EventArgs e)

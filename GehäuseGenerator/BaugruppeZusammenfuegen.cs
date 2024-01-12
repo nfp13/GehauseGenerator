@@ -59,8 +59,6 @@ namespace GehäuseGenerator
         {
             Matrix positionMatrix = _inventorApp.TransientGeometry.CreateMatrix();
 
-            MessageBox.Show("Lochdurchmesser: " + diameter.ToString("0.00"));
-
             //Familie holen
             AssemblyComponentDefinition asmDef = _assemblyDocument.ComponentDefinition;
             ContentTreeViewNode hexHeadNode = _inventorApp.ContentCenter.TreeViewTopNode.ChildNodes["Verbindungselemente"].ChildNodes["Schrauben"].ChildNodes["Rundkopf"];

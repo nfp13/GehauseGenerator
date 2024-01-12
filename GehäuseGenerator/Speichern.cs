@@ -38,8 +38,9 @@ namespace GehäuseGenerator
 
         public void deleteFiles()
         {
-            //File.Delete(getPathOben());
+            File.Delete(getPathOben());
             File.Delete(getPathUnten());
+            File.Delete(getPathBaugruppe());
             _tempPath = "";
             _pathOben = "";
             _pathUnten = "";

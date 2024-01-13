@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using Microsoft.SqlServer.Server;
 using System.Xml;
 using System.Linq;
+using System.IO;
 //using Microsoft.Office.Interop.Excel;
 //using Inventor;
 
@@ -267,9 +268,33 @@ namespace GehäuseGenerator
 
         private void button3_Click(object sender, EventArgs e)
         {
+            speichern = new Speichern();
+
             //export button
-            speichern.exportFiles();
-            baugruppeZusammenfuegen.packAndGo(speichern.getPathBaugruppe(), speichern.folderPathCAD);
+            if (speichern.selectedPath != null)
+            {
+                speichern.exportFiles();
+                baugruppeZusammenfuegen.packAndGo(speichern.getPathBaugruppe(), speichern.folderPathCAD);
+            }
+            else
+            {
+                MessageBox.Show("Bitte Speicherort wählen.");
+            }
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            speichern = new Speichern();
+            FolderBrowserDialog diag = new FolderBrowserDialog();
+            if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                speichern.selectedPath = diag.SelectedPath;
+            }
         }
 
         private void UpdateStatus(object sender, EventArgs e)

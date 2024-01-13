@@ -35,12 +35,14 @@ namespace GehäuseGenerator
             return _pathBaugruppen;
         }
 
-
         public void deleteFiles()
         {
             File.Delete(getPathOben());
             File.Delete(getPathUnten());
             File.Delete(getPathBaugruppe());
+            File.Delete(getPathScreenBoard());
+            File.Delete(getPathScreenGOben());
+            File.Delete(getPathScreenGUnten());
             _tempPath = "";
             _pathOben = "";
             _pathUnten = "";
@@ -49,8 +51,8 @@ namespace GehäuseGenerator
         public void exportFiles()
         {
             //Hauptordner
-            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string[] paths = { desktopPath, "Platinen Gehäuse" };
+            //desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string[] paths = { selectedPath, "Platinen Gehäuse" };
             string folderPath = Path.Combine(paths);
             var dir1 = folderPath;
             if (!Directory.Exists(dir1))
@@ -78,11 +80,33 @@ namespace GehäuseGenerator
 
         }
 
+        public string getPathScreenBoard()
+        {
+            string[] paths = { _tempPath, "ScreenGOben.jpg" };
+            _pathScreenGOben = Path.Combine(paths);
+            return _pathScreenGOben;
+        }
+        public string getPathScreenGOben()
+        {
+            string[] paths = { _tempPath, "ScreenGUnten.jpg" };
+            _pathScreenGUnten = Path.Combine(paths);
+            return _pathScreenGUnten;
+        }
+        public string getPathScreenGUnten()
+        {
+            string[] paths = { _tempPath, "ScreenBoard.jpg" };
+            _pathScreenBoard = Path.Combine(paths);
+            return _pathScreenBoard;
+        }
+
         private string _tempPath;
         private string _pathOben;
         private string _pathUnten;
         private string _pathBaugruppen;
-        public string folderPathCAD, folderPathDruck;
+        private string _pathScreenGOben;
+        private string _pathScreenGUnten;
+        private string _pathScreenBoard;
+        public string folderPathCAD, folderPathDruck, selectedPath;
     }
 
 }

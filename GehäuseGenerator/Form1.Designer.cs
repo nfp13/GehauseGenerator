@@ -269,14 +269,11 @@
             this.comboBox6.BackColor = System.Drawing.SystemColors.Control;
             this.comboBox6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Items.AddRange(new object[] {
-            "FotoX",
-            "FotoY",
-            "FotoZ"});
             this.comboBox6.Location = new System.Drawing.Point(160, 215);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(75, 21);
             this.comboBox6.TabIndex = 24;
+
             // 
             // textBox3
             // 
@@ -293,14 +290,11 @@
             this.comboBox4.BackColor = System.Drawing.SystemColors.Control;
             this.comboBox4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
-            "FotoX",
-            "FotoY",
-            "FotoZ"});
             this.comboBox4.Location = new System.Drawing.Point(160, 175);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(75, 21);
             this.comboBox4.TabIndex = 21;
+
             // 
             // label28
             // 
@@ -367,14 +361,11 @@
             this.cmbBoard.BackColor = System.Drawing.SystemColors.Control;
             this.cmbBoard.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cmbBoard.FormattingEnabled = true;
-            this.cmbBoard.Items.AddRange(new object[] {
-            "FotoX",
-            "FotoY",
-            "FotoZ"});
             this.cmbBoard.Location = new System.Drawing.Point(160, 135);
             this.cmbBoard.Name = "cmbBoard";
             this.cmbBoard.Size = new System.Drawing.Size(75, 21);
             this.cmbBoard.TabIndex = 14;
+ 
             // 
             // label15
             // 

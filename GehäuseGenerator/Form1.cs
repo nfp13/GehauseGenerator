@@ -12,6 +12,7 @@ using Microsoft.SqlServer.Server;
 using System.Xml;
 using System.Linq;
 using System.IO;
+using System.Text.RegularExpressions;
 //using Microsoft.Office.Interop.Excel;
 //using Inventor;
 
@@ -132,13 +133,7 @@ namespace GehäuseGenerator
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            listPanel.Add(panel1);
-            listPanel.Add(panel2);
-            listPanel.Add(panel3);
-            listPanel[index].BringToFront();
-        }
+       
 
         private void btnzurueck_Click(object sender, EventArgs e)
         {
@@ -148,21 +143,7 @@ namespace GehäuseGenerator
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //char ch = e.KeyChar;
-
-            //textBox1= Format(textBox1, "0.00mm");
-
-            //if (ch == 46 && textBox1.Text.IndexOf('.') != -1)
-            //{
-            //e.Handled = true;
-            //return;
-            //}
-
-            //if(!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            //{
-            //e.Handled = true;
-            //}
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&(e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -175,21 +156,12 @@ namespace GehäuseGenerator
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
-
-            //  textBox1 = Format(ch, "0.00mm");
-            //textBox1 = Char.ToString("0.##");
-            //string s = d.ToString("0.##");
-            //formatString += ".00";
-            //textBox2.Text = char.ToString("0.##");
-
-            if (ch == 46 && textBox2.Text.IndexOf('.') != -1)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
-                return;
             }
 
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
@@ -265,7 +237,10 @@ namespace GehäuseGenerator
 
         private void Form1_Load_1(object sender, EventArgs e)   //Was das Hier, daran kann der Seiten Fehler liegen
         {
-
+            listPanel.Add(panel1);
+            listPanel.Add(panel2);
+            listPanel.Add(panel3);
+            listPanel[index].BringToFront();
         }
 
         private void btnConfirmBoard_Click(object sender, EventArgs e)
@@ -301,6 +276,20 @@ namespace GehäuseGenerator
             if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 speichern.selectedPath = diag.SelectedPath;
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string enteredText = (sender as TextBox).Text;
+            int cursorPosition = (sender as TextBox).SelectionStart;
+
+            string[] splitByDecimal = enteredText.Split('.');
+
+            if (splitByDecimal.Length > 1 && splitByDecimal[1].Length > 2)
+            {
+                (sender as TextBox).Text = enteredText.Remove(enteredText.Length - 1);
+                (sender as TextBox).SelectionStart = cursorPosition - 1;
             }
         }
 

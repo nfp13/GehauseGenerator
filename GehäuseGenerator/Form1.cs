@@ -45,9 +45,6 @@ namespace GehäuseGenerator
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Versuch für textbox
-            textBox1.Text = ToString("N2");
-
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 dynamic result = MessageBox.Show("Soll das Program beendet werden?", "Test Prog", MessageBoxButtons.YesNo);

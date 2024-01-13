@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Windows.Forms;
 
 
 namespace GehäuseGenerator
@@ -50,9 +51,11 @@ namespace GehäuseGenerator
 
         public void exportFiles()
         {
+
+            MessageBox.Show(selectedPath);
             //Hauptordner
             //desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string[] paths = { selectedPath, "Platinen Gehäuse" };
+            string[] paths = {selectedPath, "Platinen Gehäuse" };
             string folderPath = Path.Combine(paths);
             var dir1 = folderPath;
             if (!Directory.Exists(dir1))

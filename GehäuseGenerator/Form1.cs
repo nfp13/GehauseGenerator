@@ -217,7 +217,7 @@ namespace GehäuseGenerator
         private void Form1_Load_1(object sender, EventArgs e)   
         {
             listPanel.Add(panel1);
-            listPanel.Add(panel2);
+            //listPanel.Add(panel2);
             listPanel.Add(panel3);
             listPanel[index].BringToFront();
         }
@@ -229,18 +229,17 @@ namespace GehäuseGenerator
 
         private void button3_Click(object sender, EventArgs e)
         {
-            speichern = new Speichern();
 
             //export button
-            if (speichern.selectedPath != null)
-            {
+            //if (speichern.saveAs == 1)
+            //{
                 speichern.exportFiles();
                 baugruppeZusammenfuegen.packAndGo(speichern.getPathBaugruppe(), speichern.folderPathCAD);
-            }
-            else
-            {
-                MessageBox.Show("Bitte Speicherort wählen.");
-            }
+            //}
+            //else
+            //{
+                //MessageBox.Show("Bitte Speicherort wählen.");
+            //}
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -357,6 +356,23 @@ namespace GehäuseGenerator
             {
                 e.Handled = true;
             }
+        }
+
+        private void picScreenBoard_Paint(object sender, PaintEventArgs e)
+        {
+
+            ControlPaint.DrawBorder(e.Graphics, picScreenBoard.ClientRectangle, System.Drawing.Color.White, ButtonBorderStyle.Solid);
+        }
+
+        private void picScreenOben_Paint(object sender, PaintEventArgs e)
+        {
+
+            ControlPaint.DrawBorder(e.Graphics, picScreenOben.ClientRectangle, System.Drawing.Color.White, ButtonBorderStyle.Solid);
+        }
+
+        private void picScreenUnten_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, picScreenUnten.ClientRectangle, System.Drawing.Color.White, ButtonBorderStyle.Solid);
         }
 
         //MessageBox.Show(status.Name);

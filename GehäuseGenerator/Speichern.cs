@@ -40,9 +40,9 @@ namespace GehäuseGenerator
             File.Delete(getPathOben());
             File.Delete(getPathUnten());
             File.Delete(getPathBaugruppe());
-            File.Delete(getPathScreenBoard());
-            File.Delete(getPathScreenGOben());
-            File.Delete(getPathScreenGUnten());
+            //File.Delete(getPathScreenBoard());
+            //File.Delete(getPathScreenGOben());
+            //File.Delete(getPathScreenGUnten());
             _tempPath = "";
             _pathOben = "";
             _pathUnten = "";

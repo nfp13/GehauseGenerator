@@ -122,6 +122,12 @@ namespace GehäuseGenerator
                 baugruppeZusammenfuegen.UnteresGehäuseHinzufügen(speichern.getPathUnten(), platine.BoardH);
                 baugruppeZusammenfuegen.OberesGehäuseHinzufügen(speichern.getPathOben(), platine.BoardH);
                 baugruppeZusammenfuegen.SchraubenHinzufügen(normteile.GetScrewDiameter(platine.HoleDia * 10), platine.BoardW, platine.BoardL, platine.CornerRadius, gehäuseUnten.GetScrewOffset());
+
+                baugruppeZusammenfuegen.SavePictureAsOben(speichern.getPathScreenGOben());
+                picScreenOben.Image = Image.FromFile(speichern.getPathScreenGOben());
+
+                baugruppeZusammenfuegen.SavePictureAsUnten(speichern.getPathScreenGUnten());
+                picScreenUnten.Image = Image.FromFile(speichern.getPathScreenGUnten());
             }
 
         }
@@ -204,6 +210,7 @@ namespace GehäuseGenerator
 
         private void btnSelFile_Click(object sender, EventArgs e)
         {
+            speichern = new Speichern();
             string FileName = null;
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Title = "Please Select your CircuitBoardModell...";
@@ -226,8 +233,8 @@ namespace GehäuseGenerator
                 comboBox4.DataSource = platine.Parts;
                 comboBox6.DataSource = platine.Parts;
                 textBox5.Text = FileName;
-                platine.SavePictureAs("C:\\temp\\Platine.jpg");
-
+                platine.SavePictureAs(speichern.getPathScreenBoard());
+                picScreenBoard.Image = Image.FromFile(speichern.getPathScreenBoard());
             }
         }
 

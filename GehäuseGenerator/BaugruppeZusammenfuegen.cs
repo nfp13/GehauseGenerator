@@ -177,6 +177,30 @@ namespace GehäuseGenerator
             packAndGo.CreatePackage();
         }
 
+        public void SavePictureAsOben(string Path)
+        {
+            Inventor.View view = _assemblyDocument.Views[1];
+            Inventor.Camera camera = view.Camera;
+            camera.Perspective = false;
+            camera.ViewOrientationType = ViewOrientationTypeEnum.kIsoTopRightViewOrientation;
+            camera.Fit();
+            camera.Apply();
+            view.Update();
+            camera.SaveAsBitmap(Path, 1080, 1080);
+        }
+
+        public void SavePictureAsUnten(string Path)
+        {
+            Inventor.View view = _assemblyDocument.Views[1];
+            Inventor.Camera camera = view.Camera;
+            camera.Perspective = false;
+            camera.ViewOrientationType = ViewOrientationTypeEnum.kIsoBottomRightViewOrientation;
+            camera.Fit();
+            camera.Apply();
+            view.Update();
+            camera.SaveAsBitmap(Path, 1080, 1080);
+        }
+
         private Inventor.Application _inventorApp;
         private AssemblyDocument _assemblyDocument;
 

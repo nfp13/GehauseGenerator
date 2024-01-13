@@ -44,7 +44,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picScreenBoard = new System.Windows.Forms.PictureBox();
             this.cmbBoard = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -82,13 +82,13 @@
             this.label30 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.picScreenOben = new System.Windows.Forms.PictureBox();
             this.btnzip = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.picScreenUnten = new System.Windows.Forms.PictureBox();
             this.comboBox13 = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -96,13 +96,13 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picScreenBoard)).BeginInit();
             this.pnlleiste.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picScreenOben)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picScreenUnten)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -121,7 +121,7 @@
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.picScreenBoard);
             this.panel1.Controls.Add(this.cmbBoard);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label14);
@@ -289,13 +289,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnSelFile_Click);
             // 
-            // pictureBox1
+            // picScreenBoard
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(510, 75);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(160, 160);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
+            this.picScreenBoard.ImageLocation = "";
+            this.picScreenBoard.Location = new System.Drawing.Point(510, 75);
+            this.picScreenBoard.Name = "picScreenBoard";
+            this.picScreenBoard.Size = new System.Drawing.Size(160, 160);
+            this.picScreenBoard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picScreenBoard.TabIndex = 15;
+            this.picScreenBoard.TabStop = false;
             // 
             // cmbBoard
             // 
@@ -668,13 +670,13 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.label19);
-            this.panel3.Controls.Add(this.pictureBox4);
+            this.panel3.Controls.Add(this.picScreenOben);
             this.panel3.Controls.Add(this.btnzip);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.textBox4);
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.button2);
-            this.panel3.Controls.Add(this.pictureBox3);
+            this.panel3.Controls.Add(this.picScreenUnten);
             this.panel3.Controls.Add(this.comboBox13);
             this.panel3.Controls.Add(this.label17);
             this.panel3.Controls.Add(this.label22);
@@ -695,13 +697,14 @@
             this.label19.TabIndex = 29;
             this.label19.Text = "Gehäuse Vorschau Vorne";
             // 
-            // pictureBox4
+            // picScreenOben
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(340, 75);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(160, 160);
-            this.pictureBox4.TabIndex = 28;
-            this.pictureBox4.TabStop = false;
+            this.picScreenOben.Location = new System.Drawing.Point(340, 75);
+            this.picScreenOben.Name = "picScreenOben";
+            this.picScreenOben.Size = new System.Drawing.Size(160, 160);
+            this.picScreenOben.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picScreenOben.TabIndex = 28;
+            this.picScreenOben.TabStop = false;
             // 
             // btnzip
             // 
@@ -757,13 +760,14 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // pictureBox3
+            // picScreenUnten
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(510, 75);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(160, 160);
-            this.pictureBox3.TabIndex = 15;
-            this.pictureBox3.TabStop = false;
+            this.picScreenUnten.Location = new System.Drawing.Point(510, 75);
+            this.picScreenUnten.Name = "picScreenUnten";
+            this.picScreenUnten.Size = new System.Drawing.Size(160, 160);
+            this.picScreenUnten.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picScreenUnten.TabIndex = 15;
+            this.picScreenUnten.TabStop = false;
             // 
             // comboBox13
             // 
@@ -833,6 +837,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlleiste);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Platinen Gehäusebox";
@@ -841,7 +846,7 @@
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picScreenBoard)).EndInit();
             this.pnlleiste.ResumeLayout(false);
             this.pnlleiste.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -849,8 +854,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picScreenOben)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picScreenUnten)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -871,7 +876,7 @@
         private System.Windows.Forms.Button btnzurueck;
         private System.Windows.Forms.Button btnweiter;
         private System.Windows.Forms.ComboBox cmbBoard;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picScreenBoard;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
@@ -902,7 +907,7 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox picScreenUnten;
         private System.Windows.Forms.ComboBox comboBox13;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label22;
@@ -920,7 +925,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox picScreenOben;
         private System.Windows.Forms.Button button6;
     }
 }

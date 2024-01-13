@@ -45,6 +45,9 @@ namespace GehäuseGenerator
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //Versuch für textbox
+            textBox1.Text = ToString("N2");
+
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 dynamic result = MessageBox.Show("Soll das Program beendet werden?", "Test Prog", MessageBoxButtons.YesNo);
@@ -263,7 +266,7 @@ namespace GehäuseGenerator
             platine.AddLEDToCutOuts(platine.Parts.ElementAt(comboBox4.SelectedIndex));
         }
 
-        private void Form1_Load_1(object sender, EventArgs e)
+        private void Form1_Load_1(object sender, EventArgs e)   //Was das Hier, daran kann der Seiten Fehler liegen
         {
 
         }

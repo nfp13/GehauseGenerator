@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -37,7 +38,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
@@ -95,7 +95,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picScreenBoard)).BeginInit();
             this.pnlleiste.SuspendLayout();
@@ -108,6 +108,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.textBox7);
             this.panel1.Controls.Add(this.textBox6);
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.textBox5);
@@ -116,7 +117,6 @@
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.comboBox6);
             this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.comboBox5);
             this.panel1.Controls.Add(this.comboBox4);
             this.panel1.Controls.Add(this.label28);
             this.panel1.Controls.Add(this.label27);
@@ -138,6 +138,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(700, 360);
             this.panel1.TabIndex = 1;
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox6.Location = new System.Drawing.Point(610, 240);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(60, 20);
+            this.textBox6.TabIndex = 30;
             // 
             // button6
             // 
@@ -215,20 +223,6 @@
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 23;
             // 
-            // comboBox5
-            // 
-            this.comboBox5.BackColor = System.Drawing.SystemColors.Control;
-            this.comboBox5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
-            "FotoX",
-            "FotoY",
-            "FotoZ"});
-            this.comboBox5.Location = new System.Drawing.Point(260, 300);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(100, 21);
-            this.comboBox5.TabIndex = 22;
-            // 
             // comboBox4
             // 
             this.comboBox4.BackColor = System.Drawing.SystemColors.Control;
@@ -248,9 +242,9 @@
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(160, 305);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(49, 13);
+            this.label28.Size = new System.Drawing.Size(87, 13);
             this.label28.TabIndex = 20;
-            this.label28.Text = "Schalter:";
+            this.label28.Text = "Rundungsradius:";
             // 
             // label27
             // 
@@ -259,7 +253,7 @@
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(65, 13);
             this.label27.TabIndex = 19;
-            this.label27.Text = "Akku Maße:";
+            this.label27.Text = "Wanddicke:";
             // 
             // textBox2
             // 
@@ -830,13 +824,13 @@
             this.label33.TabIndex = 1;
             this.label33.Text = "Speicherort wählen:";
             // 
-            // textBox6
+            // textBox7
             // 
-            this.textBox6.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox6.Location = new System.Drawing.Point(610, 240);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(60, 20);
-            this.textBox6.TabIndex = 30;
+            this.textBox7.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox7.Location = new System.Drawing.Point(260, 300);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 20);
+            this.textBox7.TabIndex = 31;
             // 
             // Form1
             // 
@@ -893,7 +887,6 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.Panel panel2;
@@ -938,6 +931,7 @@
         private System.Windows.Forms.PictureBox picScreenOben;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox7;
     }
 }
 

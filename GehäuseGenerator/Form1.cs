@@ -276,7 +276,10 @@ namespace GehäuseGenerator
         {
             //MessageBox.Show(status.Name);
             label16.Text = status.Name;
-            progressBar1.Value = status.Progress; 
+            progressBar1.Value = status.Progress;
+            if (status.Progress > 0) {progressBar1.Value = status.Progress - 1;}
+            else { progressBar1.Value = 0;}
+            progressBar1.Value = status.Progress;
         }
     }
 }

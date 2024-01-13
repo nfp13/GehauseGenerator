@@ -32,9 +32,10 @@ namespace GehäuseGenerator
 
         Inventor.Application inventorApp;
 
-
+        //Für Seiten wechseln
         List<Panel> listPanel = new List<Panel>();
         int index;
+
         public Form1()
         {
             status = new Status();
@@ -211,7 +212,8 @@ namespace GehäuseGenerator
             platine.AddLEDToCutOuts(platine.Parts.ElementAt(comboBox4.SelectedIndex));
         }
 
-        private void Form1_Load_1(object sender, EventArgs e)   //Was das Hier, daran kann der Seiten Fehler liegen
+        //Seiten wechseln
+        private void Form1_Load_1(object sender, EventArgs e)   
         {
             listPanel.Add(panel1);
             listPanel.Add(panel2);
@@ -238,11 +240,6 @@ namespace GehäuseGenerator
             {
                 MessageBox.Show("Bitte Speicherort wählen.");
             }
-        }
-
-        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-
         }
 
         private void button2_Click(object sender, EventArgs e)

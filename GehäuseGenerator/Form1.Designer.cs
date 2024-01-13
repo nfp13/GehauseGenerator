@@ -100,6 +100,10 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picScreenBoard)).BeginInit();
             this.pnlleiste.SuspendLayout();
@@ -112,6 +116,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.textBox9);
+            this.panel1.Controls.Add(this.textBox8);
+            this.panel1.Controls.Add(this.label37);
+            this.panel1.Controls.Add(this.label36);
             this.panel1.Controls.Add(this.label35);
             this.panel1.Controls.Add(this.label34);
             this.panel1.Controls.Add(this.label25);
@@ -198,6 +206,7 @@
             this.textBox6.BackColor = System.Drawing.SystemColors.Control;
             this.textBox6.Location = new System.Drawing.Point(610, 240);
             this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(60, 20);
             this.textBox6.TabIndex = 30;
             // 
@@ -205,7 +214,7 @@
             // 
             this.button6.AutoSize = true;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(280, 125);
+            this.button6.Location = new System.Drawing.Point(260, 135);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(25, 25);
             this.button6.TabIndex = 29;
@@ -216,10 +225,10 @@
             // textBox5
             // 
             this.textBox5.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox5.Location = new System.Drawing.Point(360, 70);
+            this.textBox5.Location = new System.Drawing.Point(390, 75);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(75, 20);
+            this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 28;
             // 
             // label18
@@ -235,7 +244,7 @@
             // 
             this.button5.AutoSize = true;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(280, 220);
+            this.button5.Location = new System.Drawing.Point(260, 210);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(25, 25);
             this.button5.TabIndex = 26;
@@ -247,7 +256,7 @@
             // 
             this.button4.AutoSize = true;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(280, 170);
+            this.button4.Location = new System.Drawing.Point(260, 175);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(25, 25);
             this.button4.TabIndex = 25;
@@ -264,9 +273,9 @@
             "FotoX",
             "FotoY",
             "FotoZ"});
-            this.comboBox6.Location = new System.Drawing.Point(160, 221);
+            this.comboBox6.Location = new System.Drawing.Point(160, 215);
             this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(100, 21);
+            this.comboBox6.Size = new System.Drawing.Size(75, 21);
             this.comboBox6.TabIndex = 24;
             // 
             // textBox3
@@ -288,9 +297,9 @@
             "FotoX",
             "FotoY",
             "FotoZ"});
-            this.comboBox4.Location = new System.Drawing.Point(160, 172);
+            this.comboBox4.Location = new System.Drawing.Point(160, 175);
             this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(100, 21);
+            this.comboBox4.Size = new System.Drawing.Size(75, 21);
             this.comboBox4.TabIndex = 21;
             // 
             // label28
@@ -362,9 +371,9 @@
             "FotoX",
             "FotoY",
             "FotoZ"});
-            this.cmbBoard.Location = new System.Drawing.Point(160, 125);
+            this.cmbBoard.Location = new System.Drawing.Point(160, 135);
             this.cmbBoard.Name = "cmbBoard";
-            this.cmbBoard.Size = new System.Drawing.Size(100, 21);
+            this.cmbBoard.Size = new System.Drawing.Size(75, 21);
             this.cmbBoard.TabIndex = 14;
             // 
             // label15
@@ -416,7 +425,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(20, 225);
+            this.label7.Location = new System.Drawing.Point(20, 220);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(132, 13);
             this.label7.TabIndex = 7;
@@ -425,7 +434,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 175);
+            this.label5.Location = new System.Drawing.Point(20, 180);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(118, 13);
             this.label5.TabIndex = 5;
@@ -434,7 +443,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 125);
+            this.label3.Location = new System.Drawing.Point(20, 140);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 13);
             this.label3.TabIndex = 3;
@@ -534,7 +543,7 @@
             this.panel2.Controls.Add(this.label21);
             this.panel2.Controls.Add(this.label29);
             this.panel2.Controls.Add(this.label30);
-            this.panel2.Location = new System.Drawing.Point(716, 10);
+            this.panel2.Location = new System.Drawing.Point(716, 376);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(700, 360);
             this.panel2.TabIndex = 25;
@@ -737,7 +746,7 @@
             this.panel3.Controls.Add(this.label23);
             this.panel3.Controls.Add(this.label26);
             this.panel3.Controls.Add(this.label33);
-            this.panel3.Location = new System.Drawing.Point(716, 376);
+            this.panel3.Location = new System.Drawing.Point(716, 10);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(700, 360);
             this.panel3.TabIndex = 25;
@@ -882,6 +891,42 @@
             this.label33.TabIndex = 1;
             this.label33.Text = "Speicherort wählen:";
             // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(313, 180);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(64, 13);
+            this.label36.TabIndex = 36;
+            this.label36.Text = "Anschlüsse:";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(313, 220);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(78, 13);
+            this.label37.TabIndex = 37;
+            this.label37.Text = "LED/ Displays:";
+            // 
+            // textBox8
+            // 
+            this.textBox8.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox8.Location = new System.Drawing.Point(390, 175);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
+            this.textBox8.Size = new System.Drawing.Size(100, 20);
+            this.textBox8.TabIndex = 38;
+            // 
+            // textBox9
+            // 
+            this.textBox9.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox9.Location = new System.Drawing.Point(390, 215);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
+            this.textBox9.Size = new System.Drawing.Size(100, 20);
+            this.textBox9.TabIndex = 39;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -986,6 +1031,10 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label36;
     }
 }
 

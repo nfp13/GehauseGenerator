@@ -141,31 +141,7 @@ namespace GehäuseGenerator
                 listPanel[--index].BringToFront();
         }
 
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
 
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-        }
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -279,6 +255,7 @@ namespace GehäuseGenerator
             }
         }
 
+        //Textboxen nur zwei Nachkommastellen
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             string enteredText = (sender as TextBox).Text;
@@ -293,9 +270,100 @@ namespace GehäuseGenerator
             }
         }
 
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            string enteredText = (sender as TextBox).Text;
+            int cursorPosition = (sender as TextBox).SelectionStart;
+
+            string[] splitByDecimal = enteredText.Split('.');
+
+            if (splitByDecimal.Length > 1 && splitByDecimal[1].Length > 2)
+            {
+                (sender as TextBox).Text = enteredText.Remove(enteredText.Length - 1);
+                (sender as TextBox).SelectionStart = cursorPosition - 1;
+            }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            string enteredText = (sender as TextBox).Text;
+            int cursorPosition = (sender as TextBox).SelectionStart;
+
+            string[] splitByDecimal = enteredText.Split('.');
+
+            if (splitByDecimal.Length > 1 && splitByDecimal[1].Length > 2)
+            {
+                (sender as TextBox).Text = enteredText.Remove(enteredText.Length - 1);
+                (sender as TextBox).SelectionStart = cursorPosition - 1;
+            }
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+            string enteredText = (sender as TextBox).Text;
+            int cursorPosition = (sender as TextBox).SelectionStart;
+
+            string[] splitByDecimal = enteredText.Split('.');
+
+            if (splitByDecimal.Length > 1 && splitByDecimal[1].Length > 2)
+            {
+                (sender as TextBox).Text = enteredText.Remove(enteredText.Length - 1);
+                (sender as TextBox).SelectionStart = cursorPosition - 1;
+            }
+        }
+
+        //Textboxen keine Buchstaben und nur ein Punkt
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox7_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        //MessageBox.Show(status.Name);
         private void UpdateStatus(object sender, EventArgs e)
         {
-            //MessageBox.Show(status.Name);
             label16.Text = status.Name;
             progressBar1.Value = status.Progress;
             if (status.Progress > 0) {progressBar1.Value = status.Progress - 1;}

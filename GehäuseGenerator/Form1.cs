@@ -14,9 +14,8 @@ using System.Linq;
 using System.IO;
 using System.Text.RegularExpressions;
 using Microsoft.Office.Interop.Excel;
-//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-//using Microsoft.Office.Interop.Excel;
-//using Inventor;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Inventor;
 
 
 namespace GehäuseGenerator
@@ -77,17 +76,17 @@ namespace GehäuseGenerator
                 if (uiMode == "light")
                 {
                     btnchangemode.Text = "Dark Mode";
-                    this.ForeColor = Color.FromArgb(47, 54, 64);
-                    this.BackColor = Color.FromArgb(245, 246, 250);
-                    pnlleiste.BackColor = Color.FromArgb(231, 231, 231);
+                    this.ForeColor = System.Drawing.Color.FromArgb(47, 54, 64);
+                    this.BackColor = System.Drawing.Color.FromArgb(245, 246, 250);
+                    pnlleiste.BackColor = System.Drawing.Color.FromArgb(231, 231, 231);
                     ConfigurationManager.AppSettings[key] = "dark";
                 }
                 else
                 {
                     btnchangemode.Text = "Light Mode";
-                    this.ForeColor = Color.FromArgb(245, 246, 250);
-                    this.BackColor = Color.FromArgb(29, 29, 29);
-                    pnlleiste.BackColor = Color.FromArgb(49, 49, 49);
+                    this.ForeColor = System.Drawing.Color.FromArgb(245, 246, 250);
+                    this.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+                    pnlleiste.BackColor = System.Drawing.Color.FromArgb(49, 49, 49);
                     ConfigurationManager.AppSettings[key] = "light";
                 }
             }
@@ -257,57 +256,57 @@ namespace GehäuseGenerator
         //Textboxen nur zwei Nachkommastellen
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string enteredText = (sender as TextBox).Text;
-            int cursorPosition = (sender as TextBox).SelectionStart;
+            string enteredText = (sender as System.Windows.Forms.TextBox).Text;
+            int cursorPosition = (sender as System.Windows.Forms.TextBox).SelectionStart;
 
             string[] splitByDecimal = enteredText.Split('.');
 
             if (splitByDecimal.Length > 1 && splitByDecimal[1].Length > 2)
             {
-                (sender as TextBox).Text = enteredText.Remove(enteredText.Length - 1);
-                (sender as TextBox).SelectionStart = cursorPosition - 1;
+                (sender as System.Windows.Forms.TextBox).Text = enteredText.Remove(enteredText.Length - 1);
+                (sender as System.Windows.Forms.TextBox).SelectionStart = cursorPosition - 1;
             }
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            string enteredText = (sender as TextBox).Text;
-            int cursorPosition = (sender as TextBox).SelectionStart;
+            string enteredText = (sender as System.Windows.Forms.TextBox).Text;
+            int cursorPosition = (sender as System.Windows.Forms.TextBox).SelectionStart;
 
             string[] splitByDecimal = enteredText.Split('.');
 
             if (splitByDecimal.Length > 1 && splitByDecimal[1].Length > 2)
             {
-                (sender as TextBox).Text = enteredText.Remove(enteredText.Length - 1);
-                (sender as TextBox).SelectionStart = cursorPosition - 1;
+                (sender as System.Windows.Forms.TextBox).Text = enteredText.Remove(enteredText.Length - 1);
+                (sender as System.Windows.Forms.TextBox).SelectionStart = cursorPosition - 1;
             }
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            string enteredText = (sender as TextBox).Text;
-            int cursorPosition = (sender as TextBox).SelectionStart;
+            string enteredText = (sender as System.Windows.Forms.TextBox).Text;
+            int cursorPosition = (sender as System.Windows.Forms.TextBox).SelectionStart;
 
             string[] splitByDecimal = enteredText.Split('.');
 
             if (splitByDecimal.Length > 1 && splitByDecimal[1].Length > 2)
             {
-                (sender as TextBox).Text = enteredText.Remove(enteredText.Length - 1);
-                (sender as TextBox).SelectionStart = cursorPosition - 1;
+                (sender as System.Windows.Forms.TextBox).Text = enteredText.Remove(enteredText.Length - 1);
+                (sender as System.Windows.Forms.TextBox).SelectionStart = cursorPosition - 1;
             }
         }
 
         private void textBox7_TextChanged(object sender, EventArgs e)
         {
-            string enteredText = (sender as TextBox).Text;
-            int cursorPosition = (sender as TextBox).SelectionStart;
+            string enteredText = (sender as System.Windows.Forms.TextBox).Text;
+            int cursorPosition = (sender as System.Windows.Forms.TextBox).SelectionStart;
 
             string[] splitByDecimal = enteredText.Split('.');
 
             if (splitByDecimal.Length > 1 && splitByDecimal[1].Length > 2)
             {
-                (sender as TextBox).Text = enteredText.Remove(enteredText.Length - 1);
-                (sender as TextBox).SelectionStart = cursorPosition - 1;
+                (sender as System.Windows.Forms.TextBox).Text = enteredText.Remove(enteredText.Length - 1);
+                (sender as System.Windows.Forms.TextBox).SelectionStart = cursorPosition - 1;
             }
         }
 
@@ -318,7 +317,7 @@ namespace GehäuseGenerator
             {
                 e.Handled = true;
             }
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == '.') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
@@ -330,7 +329,7 @@ namespace GehäuseGenerator
             {
                 e.Handled = true;
             }
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == '.') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
@@ -342,7 +341,7 @@ namespace GehäuseGenerator
             {
                 e.Handled = true;
             }
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == '.') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
@@ -354,7 +353,7 @@ namespace GehäuseGenerator
             {
                 e.Handled = true;
             }
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == '.') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }

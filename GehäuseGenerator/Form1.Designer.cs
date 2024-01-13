@@ -95,6 +95,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picScreenBoard)).BeginInit();
             this.pnlleiste.SuspendLayout();
@@ -107,6 +108,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.textBox6);
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.textBox5);
             this.panel1.Controls.Add(this.label18);
@@ -828,6 +830,14 @@
             this.label33.TabIndex = 1;
             this.label33.Text = "Speicherort wählen:";
             // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox6.Location = new System.Drawing.Point(610, 240);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(60, 20);
+            this.textBox6.TabIndex = 30;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -927,6 +937,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.PictureBox picScreenOben;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TextBox textBox6;
     }
 }
 

@@ -47,6 +47,8 @@ namespace GehäuseGenerator
             InitializeComponent();
             InitializeUI("UIMode");
 
+            btnzurueck.Enabled = false;
+
             // Textboxen Eingaben als Variablen speichern
         }
 
@@ -107,12 +109,7 @@ namespace GehäuseGenerator
 
         private void btnweiter_Click(object sender, EventArgs e)
         {
-            if(index<listPanel.Count-1)
-                listPanel[++index].BringToFront();
-
-            
-
-            if(true)
+            if(index == 0)
             {
                 speichern = new Speichern(status);
 
@@ -149,7 +146,40 @@ namespace GehäuseGenerator
 
                 baugruppeZusammenfuegen.SavePictureAsUnten(speichern.getPathScreenGUnten());
                 picScreenUnten.Image = Image.FromFile(speichern.getPathScreenGUnten());
+
+                btnweiter.Text = "Exportieren";
+                btnzurueck.Enabled = true;
+
             }
+            else if (index == 1)
+            {
+                speichern.exportFiles();
+                baugruppeZusammenfuegen.packAndGo(speichern.getPathBaugruppe(), speichern.folderPathCAD);
+
+                switch (comboBox13.SelectedIndex)
+                {
+                    case 0:
+                        gehäuseOben.ExportToStl(speichern.getPathObenStl());
+                        gehäuseUnten.ExportToStl(speichern.getPathUntenStl());
+                        break;
+
+                    case 1:
+                        gehäuseOben.ExportToObj(speichern.getPathObenOBJ());
+                        gehäuseUnten.ExportToObj(speichern.getPathUntenOBJ());
+                        break;
+
+                    case 2:
+                        gehäuseOben.ExportToStep(speichern.getPathObenStp());
+                        gehäuseUnten.ExportToStep(speichern.getPathUntenStp());
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+            if (index < listPanel.Count - 1)
+                listPanel[++index].BringToFront();
 
         }
 
@@ -157,6 +187,13 @@ namespace GehäuseGenerator
 
         private void btnzurueck_Click(object sender, EventArgs e)
         {
+            if (index == 1)
+            {
+                btnzurueck.Enabled = false;
+                btnweiter.Text = "Weiter";
+                speichern.deleteFiles();
+            }
+
             if (index > 0)
                 listPanel[--index].BringToFront();
         }
@@ -246,6 +283,7 @@ namespace GehäuseGenerator
         private void btnConfirmBoard_Click(object sender, EventArgs e)
         {
             platine.AnalyzeBoard(platine.Parts.ElementAt(cmbBoard.SelectedIndex));
+            textBox6.Text = (platine.BoardW * 10).ToString("0.0") + " x " + (platine.BoardL * 10).ToString("0.0") + " x " + (platine.BoardH * 10).ToString("0.0") + " mm";
         }
 
         private void button3_Click(object sender, EventArgs e)

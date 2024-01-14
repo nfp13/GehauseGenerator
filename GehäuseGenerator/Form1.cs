@@ -36,6 +36,8 @@ namespace GehäuseGenerator
         //Für Seiten wechseln
         List<Panel> listPanel = new List<Panel>();
         int index;
+        double etoleranz, mtoleranz, wanddicke, rundungsradius;
+
 
         public Form1()
         {
@@ -46,11 +48,6 @@ namespace GehäuseGenerator
             InitializeUI("UIMode");
 
             // Textboxen Eingaben als Variablen speichern
-            int etoleranz = Convert.ToInt32(textBox1.Text);
-            int mtoleranz = Convert.ToInt32(textBox2.Text);
-            int wanddicke = Convert.ToInt32(textBox3.Text);
-            int rundungsradius = Convert.ToInt32(textBox7.Text);
-
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -116,8 +113,16 @@ namespace GehäuseGenerator
             if(true)
             {
                 speichern = new Speichern(status);
-                gehäuseOben = new Gehäuse(inventorApp, status, 0.5, 0.06, 0.1, platine.BoardW, platine.BoardL, normteile.GetInsertHoleDia(platine.HoleDia * 10) * 0.1, platine.CornerRadius, platine.BoardH, platine.CompHeightTop, 0.5, normteile.GetScrewHeadDia(platine.HoleDia * 10) * 0.1, normteile.GetScrewHeadHeight(platine.HoleDia * 10) * 0.1, true);
-                gehäuseUnten = new Gehäuse(inventorApp, status, 0.5, 0.06, 0.1, platine.BoardW, platine.BoardL, normteile.GetScrewDiameter(platine.HoleDia * 10) * 0.1 + 0.06, platine.CornerRadius, platine.BoardH, platine.CompHeightBottom, 0.5, normteile.GetScrewHeadDia(platine.HoleDia * 10) * 0.1, normteile.GetScrewHeadHeight(platine.HoleDia * 10) * 0.1, false);
+
+                double.TryParse(textBox1.Text, out etoleranz);
+                double.TryParse(textBox2.Text, out mtoleranz);
+                double.TryParse(textBox3.Text, out wanddicke);
+                double.TryParse(textBox7.Text, out rundungsradius);
+
+                MessageBox.Show(mtoleranz.ToString());
+
+                gehäuseOben = new Gehäuse(inventorApp, status, wanddicke * 0.1, mtoleranz * 0.1, etoleranz * 0.1, platine.BoardW, platine.BoardL, normteile.GetInsertHoleDia(platine.HoleDia * 10) * 0.1, platine.CornerRadius, platine.BoardH, platine.CompHeightTop, rundungsradius * 0.1, normteile.GetScrewHeadDia(platine.HoleDia * 10) * 0.1, normteile.GetScrewHeadHeight(platine.HoleDia * 10) * 0.1, true);
+                gehäuseUnten = new Gehäuse(inventorApp, status, wanddicke * 0.1, mtoleranz * 0.1, etoleranz * 0.1, platine.BoardW, platine.BoardL, normteile.GetScrewDiameter(platine.HoleDia * 10) * 0.1 + 0.06, platine.CornerRadius, platine.BoardH, platine.CompHeightBottom, rundungsradius * 0.1, normteile.GetScrewHeadDia(platine.HoleDia * 10) * 0.1, normteile.GetScrewHeadHeight(platine.HoleDia * 10) * 0.1, false);
                 foreach (CutOut cutOut in platine.CutOuts)
                 {
                     gehäuseOben.AddCutOut(cutOut);
@@ -220,7 +225,7 @@ namespace GehäuseGenerator
 
         private void btnAddLed(object sender, EventArgs e)
         {
-            platine.AddLEDToCutOuts(platine.Parts.ElementAt(comboBox4.SelectedIndex));
+            platine.AddLEDToCutOuts(platine.Parts.ElementAt(comboBox6.SelectedIndex));
         }
 
         //Seiten wechseln
@@ -290,7 +295,7 @@ namespace GehäuseGenerator
             string enteredText = (sender as System.Windows.Forms.TextBox).Text;
             int cursorPosition = (sender as System.Windows.Forms.TextBox).SelectionStart;
 
-            string[] splitByDecimal = enteredText.Split('.');
+            string[] splitByDecimal = enteredText.Split(',');
 
             if (splitByDecimal.Length > 1 && splitByDecimal[1].Length > 2)
             {
@@ -304,7 +309,7 @@ namespace GehäuseGenerator
             string enteredText = (sender as System.Windows.Forms.TextBox).Text;
             int cursorPosition = (sender as System.Windows.Forms.TextBox).SelectionStart;
 
-            string[] splitByDecimal = enteredText.Split('.');
+            string[] splitByDecimal = enteredText.Split(',');
 
             if (splitByDecimal.Length > 1 && splitByDecimal[1].Length > 2)
             {
@@ -318,7 +323,7 @@ namespace GehäuseGenerator
             string enteredText = (sender as System.Windows.Forms.TextBox).Text;
             int cursorPosition = (sender as System.Windows.Forms.TextBox).SelectionStart;
 
-            string[] splitByDecimal = enteredText.Split('.');
+            string[] splitByDecimal = enteredText.Split(',');
 
             if (splitByDecimal.Length > 1 && splitByDecimal[1].Length > 2)
             {
@@ -332,7 +337,7 @@ namespace GehäuseGenerator
             string enteredText = (sender as System.Windows.Forms.TextBox).Text;
             int cursorPosition = (sender as System.Windows.Forms.TextBox).SelectionStart;
 
-            string[] splitByDecimal = enteredText.Split('.');
+            string[] splitByDecimal = enteredText.Split(',');
 
             if (splitByDecimal.Length > 1 && splitByDecimal[1].Length > 2)
             {
@@ -344,11 +349,11 @@ namespace GehäuseGenerator
         //Textboxen keine Buchstaben und nur ein Punkt
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
             {
                 e.Handled = true;
             }
-            if ((e.KeyChar == '.') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == ',') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
             }
@@ -356,11 +361,11 @@ namespace GehäuseGenerator
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
             {
                 e.Handled = true;
             }
-            if ((e.KeyChar == '.') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == ',') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
             }
@@ -368,11 +373,11 @@ namespace GehäuseGenerator
 
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
             {
                 e.Handled = true;
             }
-            if ((e.KeyChar == '.') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == ',') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
             }
@@ -380,11 +385,11 @@ namespace GehäuseGenerator
 
         private void textBox7_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
             {
                 e.Handled = true;
             }
-            if ((e.KeyChar == '.') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == ',') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
             }

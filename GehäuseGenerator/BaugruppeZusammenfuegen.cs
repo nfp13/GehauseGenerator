@@ -255,7 +255,7 @@ namespace GehäuseGenerator
             Inventor.Camera camera = view.Camera;
             camera.Perspective = false;
 
-            _status.Progress = 50;
+            _status.Progress = 75;
             _status.OnProgess();
 
             camera.ViewOrientationType = ViewOrientationTypeEnum.kIsoTopRightViewOrientation;
@@ -279,7 +279,7 @@ namespace GehäuseGenerator
             Inventor.Camera camera = view.Camera;
             camera.Perspective = false;
 
-            _status.Progress = 50;
+            _status.Progress = 75;
             _status.OnProgess();
 
             camera.ViewOrientationType = ViewOrientationTypeEnum.kIsoBottomRightViewOrientation;

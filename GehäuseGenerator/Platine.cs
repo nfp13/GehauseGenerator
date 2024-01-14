@@ -234,14 +234,26 @@ namespace GehäuseGenerator
 
         public void SavePictureAs(string Path)
         {
+            _status.Name = "Taking Screenshot";
+            _status.Progress = 0;
+            _status.OnProgess();
+
             Inventor.View view = _assemblyDocument.Views[1];
             Inventor.Camera camera = view.Camera;
             camera.Perspective = false;
+
+            _status.Progress = 75;
+            _status.OnProgess();
+
             camera.ViewOrientationType = ViewOrientationTypeEnum.kIsoTopRightViewOrientation;
             camera.Fit();
             camera.Apply();
             view.Update();
             camera.SaveAsBitmap(Path, 1080, 1080);
+
+            _status.Progress = 100;
+            _status.Name = "Done";
+            _status.OnProgess();
         }
 
         private Inventor.Application _inventorApp;

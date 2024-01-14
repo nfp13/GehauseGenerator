@@ -37,6 +37,7 @@ namespace GehäuseGenerator
         List<Panel> listPanel = new List<Panel>();
         int index;
         double etoleranz, mtoleranz, wanddicke, rundungsradius;
+        bool zip = false;
 
 
         public Form1()
@@ -178,6 +179,10 @@ namespace GehäuseGenerator
                     default:
                         break;
                 }
+                if (zip)
+                {
+                    speichern.makeZip();
+                }
             }
 
             if (index < listPanel.Count - 1)
@@ -207,10 +212,12 @@ namespace GehäuseGenerator
             if(btnzip.Text == "")
             {
                 btnzip.Text = "X";
+                zip = true;
             }
             else
             {
                 btnzip.Text = "";
+                zip = false;
             }
                 
         }
@@ -458,6 +465,7 @@ namespace GehäuseGenerator
                 e.Handled = true;
             }
         }
+
 
         private void picScreenBoard_Paint(object sender, PaintEventArgs e)
         {

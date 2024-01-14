@@ -93,9 +93,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.picScreenOben = new System.Windows.Forms.PictureBox();
             this.btnzip = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.picScreenUnten = new System.Windows.Forms.PictureBox();
             this.comboBox13 = new System.Windows.Forms.ComboBox();
@@ -760,9 +757,6 @@
             this.panel3.Controls.Add(this.label19);
             this.panel3.Controls.Add(this.picScreenOben);
             this.panel3.Controls.Add(this.btnzip);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.textBox4);
-            this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.button2);
             this.panel3.Controls.Add(this.picScreenUnten);
             this.panel3.Controls.Add(this.comboBox13);
@@ -781,9 +775,9 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(340, 240);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(129, 13);
+            this.label19.Size = new System.Drawing.Size(127, 13);
             this.label19.TabIndex = 29;
-            this.label19.Text = "Gehäuse Vorschau Vorne";
+            this.label19.Text = "Gehäuse Vorschau Oben";
             // 
             // picScreenOben
             // 
@@ -805,35 +799,6 @@
             this.btnzip.TabIndex = 27;
             this.btnzip.UseVisualStyleBackColor = true;
             this.btnzip.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(512, 305);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 13);
-            this.label6.TabIndex = 26;
-            this.label6.Text = "Parameter";
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox4.Location = new System.Drawing.Point(515, 275);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 25;
-            // 
-            // button3
-            // 
-            this.button3.AutoSize = true;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(300, 320);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(125, 25);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "Exportieren";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -877,9 +842,9 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(510, 240);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(132, 13);
+            this.label17.Size = new System.Drawing.Size(130, 13);
             this.label17.TabIndex = 13;
-            this.label17.Text = "Gehäuse Vorschau Hinten";
+            this.label17.Text = "Gehäuse Vorschau Unten";
             // 
             // label22
             // 
@@ -1003,9 +968,6 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnzip;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label16;

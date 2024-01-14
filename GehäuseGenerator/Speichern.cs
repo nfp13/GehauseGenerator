@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using System.IO.Compression;
 
 
 namespace GehäuseGenerator
@@ -47,9 +48,6 @@ namespace GehäuseGenerator
             File.Delete(getPathOben());
             File.Delete(getPathUnten());
             File.Delete(getPathBaugruppe());
-            //File.Delete(getPathScreenBoard());
-            //File.Delete(getPathScreenGOben());
-            //File.Delete(getPathScreenGUnten());
             _tempPath = "";
             _pathOben = "";
             _pathUnten = "";
@@ -64,7 +62,7 @@ namespace GehäuseGenerator
             //Hauptordner
             //desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string[] paths = {selectedPath, "Platinen Gehäuse" };
-            string folderPath = Path.Combine(paths);
+            folderPath = Path.Combine(paths);
             var dir1 = folderPath;
             if (!Directory.Exists(dir1))
             {
@@ -98,6 +96,12 @@ namespace GehäuseGenerator
             _status.Name = "Done";
             _status.OnProgess();
 
+        }
+
+        public void makeZip()
+        {
+            System.IO.Compression.ZipFile.CreateFromDirectory(folderPath, selectedPath);
+            File.Delete(folderPath);
         }
 
         public string getPathScreenBoard()
@@ -171,7 +175,7 @@ namespace GehäuseGenerator
         private string _pathUntenStl;
         private string _pathObenStp;
         private string _pathUntenStp;
-        public string folderPathCAD, folderPathDruck, selectedPath;
+        public string folderPathCAD, folderPathDruck, selectedPath, folderPath;
     }
 
 }

@@ -100,8 +100,17 @@ namespace GehäuseGenerator
 
         public void makeZip()
         {
-            System.IO.Compression.ZipFile.CreateFromDirectory(folderPath, selectedPath);
-            File.Delete(folderPath);
+            _status.Name = "Creating Zip";
+            _status.Progress = 25;
+            _status.OnProgess();
+
+            string[] paths = { selectedPath, "PlatinenGehäuse.zip" };
+            string zipPath = Path.Combine(paths);
+            System.IO.Compression.ZipFile.CreateFromDirectory(folderPath, zipPath);
+
+            _status.Progress = 100;
+            _status.Name = "Done";
+            _status.OnProgess();
         }
 
         public string getPathScreenBoard()

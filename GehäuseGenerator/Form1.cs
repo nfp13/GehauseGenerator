@@ -466,6 +466,11 @@ namespace GehäuseGenerator
             }
         }
 
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            speichern = new Speichern(status);
+            speichern.makeZip();
+        }
 
         private void picScreenBoard_Paint(object sender, PaintEventArgs e)
         {

@@ -45,6 +45,13 @@ namespace GehäuseGenerator
 
             InitializeComponent();
             InitializeUI("UIMode");
+
+            // Textboxen Eingaben als Variablen speichern
+            int etoleranz = Convert.ToInt32(textBox1.Text);
+            int mtoleranz = Convert.ToInt32(textBox2.Text);
+            int wanddicke = Convert.ToInt32(textBox3.Text);
+            int rundungsradius = Convert.ToInt32(textBox7.Text);
+
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

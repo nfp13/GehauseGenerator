@@ -771,7 +771,7 @@
             this.panel3.Controls.Add(this.label23);
             this.panel3.Controls.Add(this.label26);
             this.panel3.Controls.Add(this.label33);
-            this.panel3.Location = new System.Drawing.Point(716, 10);
+            this.panel3.Location = new System.Drawing.Point(10, 10);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(700, 360);
             this.panel3.TabIndex = 25;
@@ -922,7 +922,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1249, 667);
+            this.ClientSize = new System.Drawing.Size(715, 415);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

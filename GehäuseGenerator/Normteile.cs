@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
 
@@ -9,6 +10,7 @@ namespace GehäuseGenerator
     {
         public Normteile()
         {
+            _GenerateTemplateFile();
             _excelApp = new Microsoft.Office.Interop.Excel.Application();
             _OpenRefFile();
         }
@@ -16,7 +18,7 @@ namespace GehäuseGenerator
         private void _OpenRefFile()
         {
             string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
-            string NormteilePath = string.Format("{0}Resources\\Normteile.xlsx", System.IO.Path.GetFullPath(System.IO.Path.Combine(RunningPath, @"..\..\")));
+            string NormteilePath = $"{System.IO.Path.GetTempPath()}Normteile.xlsx";
             _wb = _excelApp.Workbooks.Open(NormteilePath);
             _wsInsert = _wb.Worksheets[1];
             _wsScrew = _wb.Worksheets[2];
@@ -114,7 +116,20 @@ namespace GehäuseGenerator
             }
         }
 
-
+        private void _GenerateTemplateFile()
+        {
+            byte[] templateFile = Properties.Resources.Normteile;
+            string tempPath = $"{System.IO.Path.GetTempPath()}Normteile.xlsx";
+            using (MemoryStream ms = new MemoryStream(templateFile))
+            {
+                using (FileStream fs = new FileStream(tempPath, FileMode.OpenOrCreate))
+                {
+                    ms.WriteTo(fs);
+                    fs.Close();
+                }
+                ms.Close();
+            }
+        }
 
         public void CloseExcel()
         {

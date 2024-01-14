@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 using Inventor;
 
@@ -33,18 +34,26 @@ namespace GehäuseGenerator
 
         private void _OpenTemplate()
         {
+            byte[] templateFile = Properties.Resources.GehauseGenerator_GehauseVorlage;
+            string tempPath = $"{System.IO.Path.GetTempPath()}GehauseGenerator_GehauseVorlage.ipt";
+            using (MemoryStream ms = new MemoryStream(templateFile))
+            {
+                using (FileStream fs = new FileStream(tempPath, FileMode.OpenOrCreate))
+                {
+                    ms.WriteTo(fs);
+                    fs.Close();
+                }
+                ms.Close();
+            }
+
             _status.Name = "Opening Gehäuse Template";
             _status.Progress = 20;
             _status.OnProgess();
 
-
-            string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
-            string TemplatePath = string.Format("{0}Resources\\GehauseGenerator_GehauseVorlage.ipt", System.IO.Path.GetFullPath(System.IO.Path.Combine(RunningPath, @"..\..\")));
-
             _status.Progress = 40;
             _status.OnProgess();
 
-            _partDocument = _inventorApp.Documents.Open(TemplatePath, true) as PartDocument;
+            _partDocument = _inventorApp.Documents.Open(tempPath, true) as PartDocument;
             _partComponentDefinition = _partDocument.ComponentDefinition as PartComponentDefinition;
 
             _status.Name = "Done";

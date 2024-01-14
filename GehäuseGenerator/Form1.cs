@@ -181,7 +181,9 @@ namespace GehäuseGenerator
                 platine.Analyze();
                 cmbBoard.DataSource = platine.Parts;
                 comboBox4.DataSource = platine.Parts;
+                comboBox4.BindingContext = new BindingContext();
                 comboBox6.DataSource = platine.Parts;
+                comboBox6.BindingContext = new BindingContext();
                 textBox5.Text = FileName;
                 platine.SavePictureAs(speichern.getPathScreenBoard());
                 picScreenBoard.Image = Image.FromFile(speichern.getPathScreenBoard());

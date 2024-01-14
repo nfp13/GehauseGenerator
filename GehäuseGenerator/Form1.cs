@@ -187,6 +187,7 @@ namespace GehäuseGenerator
                 textBox5.Text = FileName;
                 platine.SavePictureAs(speichern.getPathScreenBoard());
                 picScreenBoard.Image = Image.FromFile(speichern.getPathScreenBoard());
+                comboBox13.SelectedIndex = 0;
             }
         }
 
@@ -237,10 +238,28 @@ namespace GehäuseGenerator
             //{
                 speichern.exportFiles();
                 baugruppeZusammenfuegen.packAndGo(speichern.getPathBaugruppe(), speichern.folderPathCAD);
-                //gehäuseOben.Save(speichern.getPathObenStl());
-                //gehäuseUnten.Save(speichern.getPathUntenStl());
-                gehäuseOben.Save(speichern.getPathObenStp());
-                gehäuseUnten.Save(speichern.getPathUntenStp());
+
+                switch (comboBox13.SelectedIndex)
+                {
+                    case 0:
+                        gehäuseOben.ExportToStl(speichern.getPathObenStl());
+                        gehäuseUnten.ExportToStl(speichern.getPathUntenStl());
+                        break;
+
+                    case 1:
+                        gehäuseOben.ExportToObj(speichern.getPathObenOBJ());
+                        gehäuseUnten.ExportToObj(speichern.getPathUntenOBJ());
+                        break;
+
+                    case 2:
+                        gehäuseOben.ExportToStep(speichern.getPathObenStp());
+                        gehäuseUnten.ExportToStep(speichern.getPathUntenStp());
+                        break;
+
+                    default:
+                        break;
+                }
+            
             //}
             //else
             //{

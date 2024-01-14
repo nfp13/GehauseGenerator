@@ -145,6 +145,20 @@ namespace GehäuseGenerator
             return _pathUntenStp;
         }
 
+        public string getPathObenOBJ()
+        {
+            string[] paths = { folderPathDruck, "Obere Gehäusehälfte.obj" };
+            _pathObenStp = Path.Combine(paths);
+            return _pathObenStp;
+        }
+        public string getPathUntenOBJ()
+        {
+            string[] paths = { folderPathDruck, "Untere Gehäusehälfte.obj" };
+            _pathUntenStp = Path.Combine(paths);
+            return _pathUntenStp;
+        }
+
+
         private Status _status;
         private string _tempPath;
         private string _pathOben;

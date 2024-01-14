@@ -115,8 +115,6 @@ namespace GehäuseGenerator
         {
             if(index == 0)
             {
-                speichern = new Speichern(status);
-
                 double.TryParse(textBox1.Text, out etoleranz);
                 double.TryParse(textBox2.Text, out mtoleranz);
                 double.TryParse(textBox3.Text, out wanddicke);
@@ -263,6 +261,8 @@ namespace GehäuseGenerator
             status.OnProgess();
 
             normteile = new Normteile();
+
+            speichern = new Speichern(status);
         }
 
         private void btnAddCon(object sender, EventArgs e)
@@ -287,7 +287,7 @@ namespace GehäuseGenerator
             else
             {
                 platine.AddLEDToCutOuts(platine.Parts.ElementAt(comboBox6.SelectedIndex));
-                textBox8.Text += platine.Parts.ElementAt(comboBox6.SelectedIndex) + ", ";
+                textBox9.Text += platine.Parts.ElementAt(comboBox6.SelectedIndex) + ", ";
             }
         }
 

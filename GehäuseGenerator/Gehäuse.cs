@@ -143,7 +143,7 @@ namespace GehäuseGenerator
 
                             Profile profil = sketch.Profiles.AddForSolid(true);
                             ExtrudeDefinition extrudeDefinition = _partComponentDefinition.Features.ExtrudeFeatures.CreateExtrudeDefinition(profil, PartFeatureOperationEnum.kCutOperation);
-                            extrudeDefinition.SetDistanceExtent(_DW * 2, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
+                            extrudeDefinition.SetDistanceExtent(_DW * 4, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
                             ExtrudeFeature extrudeFeature = _partComponentDefinition.Features.ExtrudeFeatures.Add(extrudeDefinition);
                             //extrudeFeature.Name = "CutOut" + ZählerCutOuts.ToString();
                         }
@@ -160,7 +160,7 @@ namespace GehäuseGenerator
 
                             Profile profil = sketch.Profiles.AddForSolid(true);
                             ExtrudeDefinition extrudeDefinition = _partComponentDefinition.Features.ExtrudeFeatures.CreateExtrudeDefinition(profil, PartFeatureOperationEnum.kCutOperation);
-                            extrudeDefinition.SetDistanceExtent(_DW * 2, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
+                            extrudeDefinition.SetDistanceExtent(_DW * 4, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
                             ExtrudeFeature extrudeFeature = _partComponentDefinition.Features.ExtrudeFeatures.Add(extrudeDefinition);
                         }
                         else if (cutOut.YP + cutOut.YS / 2 <= _LP / 2)
@@ -176,7 +176,7 @@ namespace GehäuseGenerator
 
                             Profile profil = sketch.Profiles.AddForSolid(true);
                             ExtrudeDefinition extrudeDefinition = _partComponentDefinition.Features.ExtrudeFeatures.CreateExtrudeDefinition(profil, PartFeatureOperationEnum.kCutOperation);
-                            extrudeDefinition.SetDistanceExtent(_DW * 2, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
+                            extrudeDefinition.SetDistanceExtent(_DW * 4, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
                             ExtrudeFeature extrudeFeature = _partComponentDefinition.Features.ExtrudeFeatures.Add(extrudeDefinition);
                         }
                         else if (cutOut.YP - cutOut.YS / 2 >= -_LP / 2)
@@ -192,7 +192,7 @@ namespace GehäuseGenerator
 
                             Profile profil = sketch.Profiles.AddForSolid(true);
                             ExtrudeDefinition extrudeDefinition = _partComponentDefinition.Features.ExtrudeFeatures.CreateExtrudeDefinition(profil, PartFeatureOperationEnum.kCutOperation);
-                            extrudeDefinition.SetDistanceExtent(_DW * 2, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
+                            extrudeDefinition.SetDistanceExtent(_DW * 4, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
                             ExtrudeFeature extrudeFeature = _partComponentDefinition.Features.ExtrudeFeatures.Add(extrudeDefinition);
                         }
                         else
@@ -218,7 +218,7 @@ namespace GehäuseGenerator
 
                             Profile profil = sketch.Profiles.AddForSolid(true);
                             ExtrudeDefinition extrudeDefinition = _partComponentDefinition.Features.ExtrudeFeatures.CreateExtrudeDefinition(profil, PartFeatureOperationEnum.kCutOperation);
-                            extrudeDefinition.SetDistanceExtent(_DW * 2, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
+                            extrudeDefinition.SetDistanceExtent(_DW * 4, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
                             ExtrudeFeature extrudeFeature = _partComponentDefinition.Features.ExtrudeFeatures.Add(extrudeDefinition);
                             //extrudeFeature.Name = "CutOut" + ZählerCutOuts.ToString();
                         }
@@ -235,7 +235,7 @@ namespace GehäuseGenerator
 
                             Profile profil = sketch.Profiles.AddForSolid(true);
                             ExtrudeDefinition extrudeDefinition = _partComponentDefinition.Features.ExtrudeFeatures.CreateExtrudeDefinition(profil, PartFeatureOperationEnum.kCutOperation);
-                            extrudeDefinition.SetDistanceExtent(_DW * 2, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
+                            extrudeDefinition.SetDistanceExtent(_DW * 4, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
                             ExtrudeFeature extrudeFeature = _partComponentDefinition.Features.ExtrudeFeatures.Add(extrudeDefinition);
                         }
                         else if (cutOut.YP + cutOut.YS / 2 <= _LP / 2)
@@ -251,7 +251,7 @@ namespace GehäuseGenerator
 
                             Profile profil = sketch.Profiles.AddForSolid(true);
                             ExtrudeDefinition extrudeDefinition = _partComponentDefinition.Features.ExtrudeFeatures.CreateExtrudeDefinition(profil, PartFeatureOperationEnum.kCutOperation);
-                            extrudeDefinition.SetDistanceExtent(_DW * 2, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
+                            extrudeDefinition.SetDistanceExtent(_DW * 4, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
                             ExtrudeFeature extrudeFeature = _partComponentDefinition.Features.ExtrudeFeatures.Add(extrudeDefinition);
                         }
                         else if (cutOut.YP - cutOut.YS / 2 >= -_LP / 2)
@@ -267,7 +267,7 @@ namespace GehäuseGenerator
 
                             Profile profil = sketch.Profiles.AddForSolid(true);
                             ExtrudeDefinition extrudeDefinition = _partComponentDefinition.Features.ExtrudeFeatures.CreateExtrudeDefinition(profil, PartFeatureOperationEnum.kCutOperation);
-                            extrudeDefinition.SetDistanceExtent(_DW * 2, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
+                            extrudeDefinition.SetDistanceExtent(_DW * 4, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
                             ExtrudeFeature extrudeFeature = _partComponentDefinition.Features.ExtrudeFeatures.Add(extrudeDefinition);
                         }
                         else
@@ -293,7 +293,7 @@ namespace GehäuseGenerator
 
                         Profile profil = sketch.Profiles.AddForSolid(true);
                         ExtrudeDefinition extrudeDefinition = _partComponentDefinition.Features.ExtrudeFeatures.CreateExtrudeDefinition(profil, PartFeatureOperationEnum.kCutOperation);
-                        extrudeDefinition.SetDistanceExtent(_DW * 2, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
+                        extrudeDefinition.SetDistanceExtent(_DW * 4, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
                         ExtrudeFeature extrudeFeature = _partComponentDefinition.Features.ExtrudeFeatures.Add(extrudeDefinition);
                     }
                     else if (!cutOut.Top && !_Top)
@@ -310,7 +310,7 @@ namespace GehäuseGenerator
 
                         Profile profil = sketch.Profiles.AddForSolid(true);
                         ExtrudeDefinition extrudeDefinition = _partComponentDefinition.Features.ExtrudeFeatures.CreateExtrudeDefinition(profil, PartFeatureOperationEnum.kCutOperation);
-                        extrudeDefinition.SetDistanceExtent(_DW * 2, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
+                        extrudeDefinition.SetDistanceExtent(_DW * 4, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
                         ExtrudeFeature extrudeFeature = _partComponentDefinition.Features.ExtrudeFeatures.Add(extrudeDefinition);
                     }
                 }

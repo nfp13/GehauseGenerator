@@ -283,7 +283,7 @@ namespace GehäuseGenerator
         private void btnConfirmBoard_Click(object sender, EventArgs e)
         {
             platine.AnalyzeBoard(platine.Parts.ElementAt(cmbBoard.SelectedIndex));
-            textBox6.Text = (platine.BoardW * 10).ToString("0.0") + " x " + (platine.BoardL * 10).ToString("0.0") + " x " + (platine.BoardH * 10).ToString("0.0") + " mm";
+            textBox6.Text = (platine.BoardW * 10).ToString("0.0") + "/ " + (platine.BoardL * 10).ToString("0.0") + "/ " + (platine.BoardH * 10).ToString("0.0");
         }
 
         private void button3_Click(object sender, EventArgs e)

@@ -240,10 +240,10 @@
             // textBox6
             // 
             this.textBox6.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox6.Location = new System.Drawing.Point(610, 240);
+            this.textBox6.Location = new System.Drawing.Point(390, 135);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(60, 20);
+            this.textBox6.Size = new System.Drawing.Size(100, 20);
             this.textBox6.TabIndex = 30;
             // 
             // button6
@@ -351,9 +351,9 @@
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox2.Location = new System.Drawing.Point(570, 300);
+            this.textBox2.Location = new System.Drawing.Point(560, 300);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(60, 20);
+            this.textBox2.Size = new System.Drawing.Size(70, 20);
             this.textBox2.TabIndex = 18;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
@@ -361,9 +361,9 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.Location = new System.Drawing.Point(570, 270);
+            this.textBox1.Location = new System.Drawing.Point(560, 270);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(60, 20);
+            this.textBox1.Size = new System.Drawing.Size(70, 20);
             this.textBox1.TabIndex = 17;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
@@ -404,11 +404,11 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(510, 240);
+            this.label15.Location = new System.Drawing.Point(313, 140);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(96, 13);
+            this.label15.Size = new System.Drawing.Size(47, 13);
             this.label15.TabIndex = 13;
-            this.label15.Text = "Grundmaße Board:";
+            this.label15.Text = "X/ Y/ Z:";
             // 
             // label14
             // 
@@ -771,7 +771,7 @@
             this.panel3.Controls.Add(this.label23);
             this.panel3.Controls.Add(this.label26);
             this.panel3.Controls.Add(this.label33);
-            this.panel3.Location = new System.Drawing.Point(10, 10);
+            this.panel3.Location = new System.Drawing.Point(716, 10);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(700, 360);
             this.panel3.TabIndex = 25;
@@ -922,7 +922,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 417);
+            this.ClientSize = new System.Drawing.Size(1249, 667);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

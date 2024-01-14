@@ -237,6 +237,10 @@ namespace GehäuseGenerator
             //{
                 speichern.exportFiles();
                 baugruppeZusammenfuegen.packAndGo(speichern.getPathBaugruppe(), speichern.folderPathCAD);
+                //gehäuseOben.Save(speichern.getPathObenStl());
+                //gehäuseUnten.Save(speichern.getPathUntenStl());
+                gehäuseOben.Save(speichern.getPathObenStp());
+                gehäuseUnten.Save(speichern.getPathUntenStp());
             //}
             //else
             //{

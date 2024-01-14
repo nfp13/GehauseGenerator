@@ -48,6 +48,10 @@ namespace GehäuseGenerator
             InitializeUI("UIMode");
 
             btnzurueck.Enabled = false;
+            textBox8.Enabled = false;
+            textBox9.Enabled = false;
+            textBox5.Enabled = false;
+            textBox6.Enabled = false;
 
             // Textboxen Eingaben als Variablen speichern
         }
@@ -263,12 +267,28 @@ namespace GehäuseGenerator
 
         private void btnAddCon(object sender, EventArgs e)
         {
-            platine.AddConnectorToCutOuts(platine.Parts.ElementAt(comboBox4.SelectedIndex));
+            if (platine.BoardL == 0)
+            {
+                MessageBox.Show("Erst ein Board Auswählen!");
+            }
+            else
+            {
+                platine.AddConnectorToCutOuts(platine.Parts.ElementAt(comboBox4.SelectedIndex));
+                textBox8.Text += platine.Parts.ElementAt(comboBox4.SelectedIndex) + ", ";
+            }
         }
 
         private void btnAddLed(object sender, EventArgs e)
         {
-            platine.AddLEDToCutOuts(platine.Parts.ElementAt(comboBox6.SelectedIndex));
+            if (platine.BoardL == 0)
+            {
+                MessageBox.Show("Erst ein Board Auswählen!");
+            }
+            else
+            {
+                platine.AddLEDToCutOuts(platine.Parts.ElementAt(comboBox6.SelectedIndex));
+                textBox8.Text += platine.Parts.ElementAt(comboBox6.SelectedIndex) + ", ";
+            }
         }
 
         //Seiten wechseln
@@ -283,7 +303,7 @@ namespace GehäuseGenerator
         private void btnConfirmBoard_Click(object sender, EventArgs e)
         {
             platine.AnalyzeBoard(platine.Parts.ElementAt(cmbBoard.SelectedIndex));
-            textBox6.Text = (platine.BoardW * 10).ToString("0.0") + "/ " + (platine.BoardL * 10).ToString("0.0") + "/ " + (platine.BoardH * 10).ToString("0.0");
+            textBox6.Text = (platine.BoardW * 10).ToString("0.0") + "/" + (platine.BoardL * 10).ToString("0.0") + "/" + (platine.BoardH * 10).ToString("0.0");
         }
 
         private void button3_Click(object sender, EventArgs e)

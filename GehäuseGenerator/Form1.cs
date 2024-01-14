@@ -110,6 +110,8 @@ namespace GehäuseGenerator
             if(index<listPanel.Count-1)
                 listPanel[++index].BringToFront();
 
+            
+
             if(true)
             {
                 speichern = new Speichern(status);
@@ -119,7 +121,11 @@ namespace GehäuseGenerator
                 double.TryParse(textBox3.Text, out wanddicke);
                 double.TryParse(textBox7.Text, out rundungsradius);
 
-                MessageBox.Show(mtoleranz.ToString());
+                if(etoleranz == 0 || mtoleranz == 0 || wanddicke == 0 || rundungsradius == 0)
+                {
+                    MessageBox.Show("Bitte Werte eingeben!");
+                    return;
+                }
 
                 gehäuseOben = new Gehäuse(inventorApp, status, wanddicke * 0.1, mtoleranz * 0.1, etoleranz * 0.1, platine.BoardW, platine.BoardL, normteile.GetInsertHoleDia(platine.HoleDia * 10) * 0.1, platine.CornerRadius, platine.BoardH, platine.CompHeightTop, rundungsradius * 0.1, normteile.GetScrewHeadDia(platine.HoleDia * 10) * 0.1, normteile.GetScrewHeadHeight(platine.HoleDia * 10) * 0.1, true);
                 gehäuseUnten = new Gehäuse(inventorApp, status, wanddicke * 0.1, mtoleranz * 0.1, etoleranz * 0.1, platine.BoardW, platine.BoardL, normteile.GetScrewDiameter(platine.HoleDia * 10) * 0.1 + 0.06, platine.CornerRadius, platine.BoardH, platine.CompHeightBottom, rundungsradius * 0.1, normteile.GetScrewHeadDia(platine.HoleDia * 10) * 0.1, normteile.GetScrewHeadHeight(platine.HoleDia * 10) * 0.1, false);

@@ -97,6 +97,7 @@ namespace GehäuseGenerator
             _AddCutOutsToModel();
             _partDocument.Update();
             _partDocument.SaveAs(FilePath, true);
+            _path = FilePath;
             _partDocument.Close(true);
         }
 
@@ -322,6 +323,8 @@ namespace GehäuseGenerator
 
         public void ExportToStep(string path)
         {
+            _partDocument = _inventorApp.Documents.Open(_path, true) as PartDocument;
+
             TranslatorAddIn stepTranslator = (TranslatorAddIn)_inventorApp.ApplicationAddIns.ItemById["{90AF7F40-0C01-11D5-8E83-0010B541CD80}"];
 
             if (stepTranslator == null)
@@ -345,22 +348,65 @@ namespace GehäuseGenerator
 
                 stepTranslator.SaveCopyAs(_partDocument, translationContext, options, dataMedium);
             }
+
+            _partDocument.Close();
+        }
+
+        public void ExportToStl(string path)
+        {
+            _partDocument = _inventorApp.Documents.Open(_path, true) as PartDocument;
+
+            TranslatorAddIn stlTranslator = (TranslatorAddIn)_inventorApp.ApplicationAddIns.ItemById["{533E9A98-FC3B-11D4-8E7E-0010B541CD80}"];
+
+            if (stlTranslator == null)
+            {
+                MessageBox.Show(".stl translator not acvessable");
+                return;
+            }
+
+            TranslationContext translationContext = _inventorApp.TransientObjects.CreateTranslationContext();
+            NameValueMap options = _inventorApp.TransientObjects.CreateNameValueMap();
+
+            if (stlTranslator.HasSaveCopyAsOptions[_partDocument, translationContext, options])
+            {
+                options.Value["ExportUnits"] = 4;
+                options.Value["Resolution"] = 0;
+                options.Value["AllowMoveMeshNode"] = false;
+                options.Value["SurfaceDeviation"] = 0.0004;
+                options.Value["NormalDeviation"] = 22;
+                options.Value["MaxEdgeLength"] = 1.5;
+                options.Value["AspectRatio"] = 21.5;
+                options.Value["ExportFileStructure"] = 0;
+                options.Value["OutputFileType"] = 0;
+                options.Value["ExportColor"] = false;
+
+                translationContext.Type = IOMechanismEnum.kFileBrowseIOMechanism;
+
+                DataMedium dataMedium = _inventorApp.TransientObjects.CreateDataMedium();
+                dataMedium.FileName = path;
+
+                stlTranslator.SaveCopyAs(_partDocument, translationContext, options, dataMedium);
+            }
+
+            _partDocument.Close();
         }
 
         public void ExportToObj(string path)
         {
+            _partDocument = _inventorApp.Documents.Open(_path, true) as PartDocument;
+
             TranslatorAddIn objTranslator = null;
             foreach (ApplicationAddIn addIn in _inventorApp.ApplicationAddIns)
             {
-                if (addIn.DisplayName == "Translator: OBJ Export")
+                if (addIn.DisplayName.Contains("OBJ ex"))
                 {
                     objTranslator = (TranslatorAddIn)addIn;
                 }
             }
 
             TranslationContext translationContext = _inventorApp.TransientObjects.CreateTranslationContext();
-            translationContext.Type = IOMechanismEnum.kUnspecifiedIOMechanism;
             NameValueMap options = _inventorApp.TransientObjects.CreateNameValueMap();
+
 
             if (objTranslator.HasSaveCopyAsOptions[_partDocument, translationContext, options])
             {
@@ -372,11 +418,15 @@ namespace GehäuseGenerator
                 options.Value["AspectRatio"] = 2150;
                 options.Value["ExportFileStructure"] = 0;
 
+                translationContext.Type = IOMechanismEnum.kFileBrowseIOMechanism;
+
                 DataMedium dataMedium = _inventorApp.TransientObjects.CreateDataMedium();
                 dataMedium.FileName = path;
 
                 objTranslator.SaveCopyAs(_partDocument, translationContext, options, dataMedium);
             }
+
+            _partDocument.Close(true);
 
         }
 
@@ -432,6 +482,8 @@ namespace GehäuseGenerator
         private List<CutOut> _CutOuts = new List<CutOut>();
 
         private Status _status;
+
+        private string _path;
     }
 
 }

@@ -1,16 +1,23 @@
 ﻿using System;
 using System.IO;
+using System.Windows.Forms;
 
 
 namespace GehäuseGenerator
 {
     public class Speichern
     {
-        public Speichern()
+        public Speichern(Status status)
         {
+            _status = status;
+            _status.Name = "Getting Temp Path";
+            _status.OnProgess();
+
             string result = Path.GetTempPath();
             _tempPath = result;
 
+            _status.Name = "Done";
+            _status.OnProgess();
             //MessageBox.Show("path: " + _tempPath);
         }
 
@@ -50,15 +57,22 @@ namespace GehäuseGenerator
 
         public void exportFiles()
         {
+            _status.Name = "Exporting Files";
+            _status.Progress = 0;
+            _status.OnProgess();
+
             //Hauptordner
             //desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string[] paths = { selectedPath, "Platinen Gehäuse" };
+            string[] paths = {selectedPath, "Platinen Gehäuse" };
             string folderPath = Path.Combine(paths);
             var dir1 = folderPath;
             if (!Directory.Exists(dir1))
             {
                 Directory.CreateDirectory(dir1);
             }
+
+            _status.Progress = 30;
+            _status.OnProgess();
 
             //3D Druck Ordner
             string[] pathsDruck = { folderPath, "3D-Druck" };
@@ -69,6 +83,9 @@ namespace GehäuseGenerator
                 Directory.CreateDirectory(dir2);
             }
 
+            _status.Progress = 60;
+            _status.OnProgess();
+
             //CAD Ordner
             string[] pathsCAD = { folderPath, "CAD" };
             folderPathCAD = Path.Combine(pathsCAD);
@@ -77,6 +94,9 @@ namespace GehäuseGenerator
             {
                 Directory.CreateDirectory(dir3);
             }
+            _status.Progress = 100;
+            _status.Name = "Done";
+            _status.OnProgess();
 
         }
 
@@ -99,6 +119,47 @@ namespace GehäuseGenerator
             return _pathScreenBoard;
         }
 
+        public string getPathObenStl()
+        {
+            string[] paths = { folderPathDruck, "Obere Gehäusehälfte.stl" };
+            _pathObenStl = Path.Combine(paths);
+            return _pathObenStl;
+        }
+        public string getPathUntenStl()
+        {
+            string[] paths = { folderPathDruck, "Untere Gehäusehälfte.stl" };
+            _pathUntenStl = Path.Combine(paths);
+            return _pathUntenStl;
+        }
+
+        public string getPathObenStp()
+        {
+            string[] paths = { folderPathDruck, "Obere Gehäusehälfte.stp" };
+            _pathObenStp = Path.Combine(paths);
+            return _pathObenStp;
+        }
+        public string getPathUntenStp()
+        {
+            string[] paths = { folderPathDruck, "Untere Gehäusehälfte.stp" };
+            _pathUntenStp = Path.Combine(paths);
+            return _pathUntenStp;
+        }
+
+        public string getPathObenOBJ()
+        {
+            string[] paths = { folderPathDruck, "Obere Gehäusehälfte.obj" };
+            _pathObenStp = Path.Combine(paths);
+            return _pathObenStp;
+        }
+        public string getPathUntenOBJ()
+        {
+            string[] paths = { folderPathDruck, "Untere Gehäusehälfte.obj" };
+            _pathUntenStp = Path.Combine(paths);
+            return _pathUntenStp;
+        }
+
+
+        private Status _status;
         private string _tempPath;
         private string _pathOben;
         private string _pathUnten;
@@ -106,6 +167,10 @@ namespace GehäuseGenerator
         private string _pathScreenGOben;
         private string _pathScreenGUnten;
         private string _pathScreenBoard;
+        private string _pathObenStl;
+        private string _pathUntenStl;
+        private string _pathObenStp;
+        private string _pathUntenStp;
         public string folderPathCAD, folderPathDruck, selectedPath;
     }
 

@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -100,10 +104,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picScreenBoard)).BeginInit();
             this.pnlleiste.SuspendLayout();
@@ -154,6 +154,42 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(700, 360);
             this.panel1.TabIndex = 1;
+            // 
+            // textBox9
+            // 
+            this.textBox9.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox9.Location = new System.Drawing.Point(390, 215);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
+            this.textBox9.Size = new System.Drawing.Size(100, 20);
+            this.textBox9.TabIndex = 39;
+            // 
+            // textBox8
+            // 
+            this.textBox8.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox8.Location = new System.Drawing.Point(390, 175);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
+            this.textBox8.Size = new System.Drawing.Size(100, 20);
+            this.textBox8.TabIndex = 38;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(313, 220);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(78, 13);
+            this.label37.TabIndex = 37;
+            this.label37.Text = "LED/ Displays:";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(313, 180);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(64, 13);
+            this.label36.TabIndex = 36;
+            this.label36.Text = "Anschlüsse:";
             // 
             // label35
             // 
@@ -273,7 +309,6 @@
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(75, 21);
             this.comboBox6.TabIndex = 24;
-
             // 
             // textBox3
             // 
@@ -294,7 +329,6 @@
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(75, 21);
             this.comboBox4.TabIndex = 21;
-
             // 
             // label28
             // 
@@ -355,6 +389,7 @@
             this.picScreenBoard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picScreenBoard.TabIndex = 15;
             this.picScreenBoard.TabStop = false;
+            this.picScreenBoard.Paint += new System.Windows.Forms.PaintEventHandler(this.picScreenBoard_Paint);
             // 
             // cmbBoard
             // 
@@ -365,7 +400,6 @@
             this.cmbBoard.Name = "cmbBoard";
             this.cmbBoard.Size = new System.Drawing.Size(75, 21);
             this.cmbBoard.TabIndex = 14;
- 
             // 
             // label15
             // 
@@ -737,7 +771,7 @@
             this.panel3.Controls.Add(this.label23);
             this.panel3.Controls.Add(this.label26);
             this.panel3.Controls.Add(this.label33);
-            this.panel3.Location = new System.Drawing.Point(716, 10);
+            this.panel3.Location = new System.Drawing.Point(10, 10);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(700, 360);
             this.panel3.TabIndex = 25;
@@ -759,6 +793,7 @@
             this.picScreenOben.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picScreenOben.TabIndex = 28;
             this.picScreenOben.TabStop = false;
+            this.picScreenOben.Paint += new System.Windows.Forms.PaintEventHandler(this.picScreenOben_Paint);
             // 
             // btnzip
             // 
@@ -822,6 +857,7 @@
             this.picScreenUnten.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picScreenUnten.TabIndex = 15;
             this.picScreenUnten.TabStop = false;
+            this.picScreenUnten.Paint += new System.Windows.Forms.PaintEventHandler(this.picScreenUnten_Paint);
             // 
             // comboBox13
             // 
@@ -882,47 +918,11 @@
             this.label33.TabIndex = 1;
             this.label33.Text = "Speicherort wählen:";
             // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(313, 180);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(64, 13);
-            this.label36.TabIndex = 36;
-            this.label36.Text = "Anschlüsse:";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(313, 220);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(78, 13);
-            this.label37.TabIndex = 37;
-            this.label37.Text = "LED/ Displays:";
-            // 
-            // textBox8
-            // 
-            this.textBox8.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox8.Location = new System.Drawing.Point(390, 175);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 38;
-            // 
-            // textBox9
-            // 
-            this.textBox9.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox9.Location = new System.Drawing.Point(390, 215);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 39;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1403, 856);
+            this.ClientSize = new System.Drawing.Size(715, 412);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

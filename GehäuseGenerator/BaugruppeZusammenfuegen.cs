@@ -11,23 +11,40 @@ namespace GehäuseGenerator
     public class BaugruppeZusammenfuegen
     {
 
-        public BaugruppeZusammenfuegen(Inventor.Application inventorApp, string filePath)
+        public BaugruppeZusammenfuegen(Inventor.Application inventorApp, string filePath, Status status)
         {
             _inventorApp = inventorApp;
+            _status = status;
 
+            _status.Name = "Creating Assembly";
+            _status.OnProgess();
             //Baugruppe erstellen
             _assemblyDocument = _inventorApp.Documents.Add(DocumentTypeEnum.kAssemblyDocumentObject, _inventorApp.GetTemplateFile(DocumentTypeEnum.kAssemblyDocumentObject)) as AssemblyDocument;
 
+            _status.Name = "Done";
+            _status.OnProgess();
         }
 
         public void PlatineHinzufügen(string filePath, Matrix positionMatrix)
         {
+            _status.Name = "Adding PCB";
+            _status.Progress = 0;
+            _status.OnProgess();
+
             //Platzieren
             ComponentOccurrence platine = _assemblyDocument.ComponentDefinition.Occurrences.Add(filePath, positionMatrix);
+
+            _status.Progress = 100;
+            _status.Name = "Done";
+            _status.OnProgess();
         }
 
         public void OberesGehäuseHinzufügen(string filePath, double zOffset)
         {
+            _status.Name = "Adding Parts";
+            _status.Progress = 0;
+            _status.OnProgess();
+
             Matrix positionMatrix = _inventorApp.TransientGeometry.CreateMatrix();
 
             //Schieben
@@ -36,10 +53,18 @@ namespace GehäuseGenerator
 
             //Platzieren
             ComponentOccurrence oberesGehäuse = _assemblyDocument.ComponentDefinition.Occurrences.Add(filePath, positionMatrix);
+
+            _status.Progress = 100;
+            _status.Name = "Done";
+            _status.OnProgess();
         }
 
         public void UnteresGehäuseHinzufügen(string filePath, double zOffset)
         {
+            _status.Name = "Adding Parts";
+            _status.Progress = 0;
+            _status.OnProgess();
+
             Matrix positionMatrix = _inventorApp.TransientGeometry.CreateMatrix();
 
             //Drehen
@@ -53,16 +78,28 @@ namespace GehäuseGenerator
 
             //Platzieren
             ComponentOccurrence unteresGehäuse = _assemblyDocument.ComponentDefinition.Occurrences.Add(filePath, positionMatrix);
+
+            _status.Progress = 100;
+            _status.Name = "Done";
+            _status.OnProgess();
         }
 
         public void SchraubenHinzufügen(double diameter, double breite, double länge, double radius, double höheSchrauben)
         {
+            _status.Name = "Adding Screws";
+            _status.Progress = 0;
+            _status.OnProgess();
+
             Matrix positionMatrix = _inventorApp.TransientGeometry.CreateMatrix();
 
             //Familie holen
             AssemblyComponentDefinition asmDef = _assemblyDocument.ComponentDefinition;
             ContentTreeViewNode hexHeadNode = _inventorApp.ContentCenter.TreeViewTopNode.ChildNodes["Verbindungselemente"].ChildNodes["Schrauben"].ChildNodes["Rundkopf"];
             ContentFamily family = null;
+
+            _status.Progress = 25;
+            _status.OnProgess();
+
             foreach (ContentFamily checkFamily in hexHeadNode.Families)
             {
                 if (checkFamily.DisplayName == "ISO 7045 Z")
@@ -106,6 +143,9 @@ namespace GehäuseGenerator
 
                 }
 
+                _status.Progress = 50;
+                _status.OnProgess();
+
                 MemberManagerErrorsEnum failureReason;
                 string failureMessage;
                 string memberFilename = family.CreateMember(zeile, out failureReason, out failureMessage, ContentMemberRefreshEnum.kRefreshOutOfDateParts);
@@ -126,6 +166,9 @@ namespace GehäuseGenerator
                 Vector trans2 = _inventorApp.TransientGeometry.CreateVector(((breite / 2) - radius), -((länge / 2) - radius), -höheSchrauben);
                 positionMatrix.SetTranslation(trans2);
 
+                _status.Progress = 75;
+                _status.OnProgess();
+
                 ComponentOccurrence s2 = asmDef.Occurrences.Add(memberFilename, positionMatrix);
 
                 //Schieben
@@ -139,18 +182,36 @@ namespace GehäuseGenerator
                 positionMatrix.SetTranslation(trans4);
 
                 ComponentOccurrence s4 = asmDef.Occurrences.Add(memberFilename, positionMatrix);
+
+                _status.Progress = 100;
+                _status.Name = "Done";
+                _status.OnProgess();
             }
         }
 
         public void Save(string BaugruppePath)
         {
+            _status.Name = "Pack and Go";
+            _status.Progress = 0;
+            _status.OnProgess();
+
             _assemblyDocument.Update();
+            _status.Progress = 50;
+            _status.OnProgess();
             _assemblyDocument.SaveAs(BaugruppePath, true);
             _assemblyDocument.Close(true);
+
+            _status.Progress = 100;
+            _status.Name = "Done";
+            _status.OnProgess();
         }
 
         public void packAndGo(string pathBaugruppe, string pathToSave)
         {
+            _status.Name = "Pack and Go";
+            _status.Progress = 0;
+            _status.OnProgess();
+
             string desktopPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
             PackAndGoComponent packAndGoComp = new PackAndGoComponent();
             Save(pathBaugruppe);
@@ -158,6 +219,9 @@ namespace GehäuseGenerator
 
             string[] refFiles = new string[] { };
             object refMissFiles = new object();
+
+            _status.Progress = 50;
+            _status.OnProgess();
 
             // Set the options
             packAndGo.SkipLibraries = false;
@@ -175,34 +239,63 @@ namespace GehäuseGenerator
 
             // Start the pack and go to create the package
             packAndGo.CreatePackage();
+
+            _status.Progress = 100;
+            _status.Name = "Done";
+            _status.OnProgess();
         }
 
         public void SavePictureAsOben(string Path)
         {
+            _status.Name = "Taking Screenshot";
+            _status.Progress = 0;
+            _status.OnProgess();
+
             Inventor.View view = _assemblyDocument.Views[1];
             Inventor.Camera camera = view.Camera;
             camera.Perspective = false;
+
+            _status.Progress = 50;
+            _status.OnProgess();
+
             camera.ViewOrientationType = ViewOrientationTypeEnum.kIsoTopRightViewOrientation;
             camera.Fit();
             camera.Apply();
             view.Update();
             camera.SaveAsBitmap(Path, 1080, 1080);
+
+            _status.Progress = 100;
+            _status.Name = "Done";
+            _status.OnProgess();
         }
 
         public void SavePictureAsUnten(string Path)
         {
+            _status.Name = "Taking Screenshot";
+            _status.Progress = 0;
+            _status.OnProgess();
+
             Inventor.View view = _assemblyDocument.Views[1];
             Inventor.Camera camera = view.Camera;
             camera.Perspective = false;
+
+            _status.Progress = 50;
+            _status.OnProgess();
+
             camera.ViewOrientationType = ViewOrientationTypeEnum.kIsoBottomRightViewOrientation;
             camera.Fit();
             camera.Apply();
             view.Update();
             camera.SaveAsBitmap(Path, 1080, 1080);
+
+            _status.Progress = 100;
+            _status.Name = "Done";
+            _status.OnProgess();
         }
 
         private Inventor.Application _inventorApp;
         private AssemblyDocument _assemblyDocument;
+        private Status _status;
 
     }
 }

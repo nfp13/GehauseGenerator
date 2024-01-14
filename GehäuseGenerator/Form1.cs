@@ -58,7 +58,7 @@ namespace GehäuseGenerator
                     System.Windows.Forms.Application.Exit();
                     
                     //löschen
-                    speichern = new Speichern();
+                    speichern = new Speichern(status);
                     speichern.deleteFiles();
                 }
                 else
@@ -108,7 +108,7 @@ namespace GehäuseGenerator
 
             if(true)
             {
-                speichern = new Speichern();
+                speichern = new Speichern(status);
                 gehäuseOben = new Gehäuse(inventorApp, status, 0.5, 0.06, 0.1, platine.BoardW, platine.BoardL, normteile.GetInsertHoleDia(platine.HoleDia * 10) * 0.1, platine.CornerRadius, platine.BoardH, platine.CompHeightTop, 0.5, normteile.GetScrewHeadDia(platine.HoleDia * 10) * 0.1, normteile.GetScrewHeadHeight(platine.HoleDia * 10) * 0.1, true);
                 gehäuseUnten = new Gehäuse(inventorApp, status, 0.5, 0.06, 0.1, platine.BoardW, platine.BoardL, normteile.GetScrewDiameter(platine.HoleDia * 10) * 0.1 + 0.06, platine.CornerRadius, platine.BoardH, platine.CompHeightBottom, 0.5, normteile.GetScrewHeadDia(platine.HoleDia * 10) * 0.1, normteile.GetScrewHeadHeight(platine.HoleDia * 10) * 0.1, false);
                 foreach (CutOut cutOut in platine.CutOuts)
@@ -120,7 +120,7 @@ namespace GehäuseGenerator
                 gehäuseUnten.Save(speichern.getPathUnten());
 
                 //zusammenfügen
-                baugruppeZusammenfuegen = new BaugruppeZusammenfuegen(inventorApp, FilePath);
+                baugruppeZusammenfuegen = new BaugruppeZusammenfuegen(inventorApp, FilePath, status);
                 baugruppeZusammenfuegen.PlatineHinzufügen(FilePath, platine.GetTransformationMatrix());
                 baugruppeZusammenfuegen.UnteresGehäuseHinzufügen(speichern.getPathUnten(), platine.BoardH);
                 baugruppeZusammenfuegen.OberesGehäuseHinzufügen(speichern.getPathOben(), platine.BoardH);
@@ -160,7 +160,7 @@ namespace GehäuseGenerator
 
         private void btnSelFile_Click(object sender, EventArgs e)
         {
-            speichern = new Speichern();
+            speichern = new Speichern(status);
             string FileName = null;
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Title = "Please Select your CircuitBoardModell...";
@@ -244,7 +244,7 @@ namespace GehäuseGenerator
 
         private void button2_Click(object sender, EventArgs e)
         {
-            speichern = new Speichern();
+            speichern = new Speichern(status);
             FolderBrowserDialog diag = new FolderBrowserDialog();
             if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {

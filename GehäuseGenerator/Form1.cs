@@ -54,6 +54,8 @@ namespace GehäuseGenerator
             textBox5.Enabled = false;
             textBox6.Enabled = false;
 
+            
+
             // Textboxen Eingaben als Variablen speichern
         }
 
@@ -499,6 +501,7 @@ namespace GehäuseGenerator
             else { progressBar1.Value = 0;}
             progressBar1.Value = status.Progress;
         }
+
     }
 }
     

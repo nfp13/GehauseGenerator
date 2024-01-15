@@ -14,28 +14,27 @@ namespace GehäuseGenerator
             _status.Name = "Getting Temp Path";
             _status.OnProgess();
 
+            //Gets temporary folder of the user 
             string result = Path.GetTempPath();
             _tempPath = result;
 
             _status.Name = "Done";
             _status.OnProgess();
-            //MessageBox.Show("path: " + _tempPath);
         }
 
+        //Gets temporary paths for the Inventor parts and the assebley
         public string getPathOben()
         {
             string[] paths = { _tempPath, "ObereGehäusehälfte.ipt" };
             _pathOben = Path.Combine(paths);
             return _pathOben;
         }
-
         public string getPathUnten()
         {
             string[] paths = { _tempPath, "UntereGehäusehälfte.ipt" };
             _pathUnten = Path.Combine(paths);
             return _pathUnten;
         }
-
         public string getPathBaugruppe()
         {
             string[] paths = { _tempPath, "Gesamt.iam" };
@@ -43,76 +42,7 @@ namespace GehäuseGenerator
             return _pathBaugruppen;
         }
 
-        public void deleteFiles()
-        {
-            File.Delete(getPathOben());
-            File.Delete(getPathUnten());
-            File.Delete(getPathBaugruppe());
-            _tempPath = "";
-            _pathOben = "";
-            _pathUnten = "";
-        }
-
-        public void exportFiles()
-        {
-            _status.Name = "Exporting Files";
-            _status.Progress = 0;
-            _status.OnProgess();
-
-            //Hauptordner
-            //desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string[] paths = {selectedPath, "Platinen Gehäuse" };
-            folderPath = Path.Combine(paths);
-            var dir1 = folderPath;
-            if (!Directory.Exists(dir1))
-            {
-                Directory.CreateDirectory(dir1);
-            }
-
-            _status.Progress = 30;
-            _status.OnProgess();
-
-            //3D Druck Ordner
-            string[] pathsDruck = { folderPath, "3D-Druck" };
-            folderPathDruck = Path.Combine(pathsDruck);
-            var dir2 = folderPathDruck;
-            if (!Directory.Exists(dir2))
-            {
-                Directory.CreateDirectory(dir2);
-            }
-
-            _status.Progress = 60;
-            _status.OnProgess();
-
-            //CAD Ordner
-            string[] pathsCAD = { folderPath, "CAD" };
-            folderPathCAD = Path.Combine(pathsCAD);
-            var dir3 = folderPathCAD;
-            if (!Directory.Exists(dir3))
-            {
-                Directory.CreateDirectory(dir3);
-            }
-            _status.Progress = 100;
-            _status.Name = "Done";
-            _status.OnProgess();
-
-        }
-
-        public void makeZip()
-        {
-            _status.Name = "Creating Zip";
-            _status.Progress = 25;
-            _status.OnProgess();
-
-            string[] paths = { selectedPath, "PlatinenGehäuse.zip" };
-            string zipPath = Path.Combine(paths);
-            System.IO.Compression.ZipFile.CreateFromDirectory(folderPath, zipPath);
-
-            _status.Progress = 100;
-            _status.Name = "Done";
-            _status.OnProgess();
-        }
-
+        //Gets temporary paths for the screenshots
         public string getPathScreenBoard()
         {
             string[] paths = { _tempPath, "ScreenGOben.jpg" };
@@ -132,6 +62,7 @@ namespace GehäuseGenerator
             return _pathScreenBoard;
         }
 
+        //Gets paths for the selected 3D-model file type
         public string getPathObenStl()
         {
             string[] paths = { folderPathDruck, "Obere Gehäusehälfte.stl" };
@@ -144,7 +75,6 @@ namespace GehäuseGenerator
             _pathUntenStl = Path.Combine(paths);
             return _pathUntenStl;
         }
-
         public string getPathObenStp()
         {
             string[] paths = { folderPathDruck, "Obere Gehäusehälfte.stp" };
@@ -157,7 +87,6 @@ namespace GehäuseGenerator
             _pathUntenStp = Path.Combine(paths);
             return _pathUntenStp;
         }
-
         public string getPathObenOBJ()
         {
             string[] paths = { folderPathDruck, "Obere Gehäusehälfte.obj" };
@@ -171,7 +100,79 @@ namespace GehäuseGenerator
             return _pathUntenStp;
         }
 
+        //Deletes created files in the temp folder
+        public void deleteFiles()
+        {
+            File.Delete(getPathOben());
+            File.Delete(getPathUnten());
+            File.Delete(getPathBaugruppe());
+            _tempPath = "";
+            _pathOben = "";
+            _pathUnten = "";
+        }
 
+        //Exports final model in a specific folder structure
+        public void exportFiles()
+        {
+            _status.Name = "Exporting Files";
+            _status.Progress = 0;
+            _status.OnProgess();
+
+            //Main folder
+            string[] paths = {selectedPath, "Platinen Gehäuse" };
+            folderPath = Path.Combine(paths);
+            var dir1 = folderPath;
+            if (!Directory.Exists(dir1))
+            {
+                Directory.CreateDirectory(dir1);
+            }
+
+            _status.Progress = 30;
+            _status.OnProgess();
+
+            //3D-model folder
+            string[] pathsDruck = { folderPath, "3D-Druck" };
+            folderPathDruck = Path.Combine(pathsDruck);
+            var dir2 = folderPathDruck;
+            if (!Directory.Exists(dir2))
+            {
+                Directory.CreateDirectory(dir2);
+            }
+
+            _status.Progress = 60;
+            _status.OnProgess();
+
+            //CAD folder
+            string[] pathsCAD = { folderPath, "CAD" };
+            folderPathCAD = Path.Combine(pathsCAD);
+            var dir3 = folderPathCAD;
+            if (!Directory.Exists(dir3))
+            {
+                Directory.CreateDirectory(dir3);
+            }
+            _status.Progress = 100;
+            _status.Name = "Done";
+            _status.OnProgess();
+
+        }
+
+        //Compresses the Main folder into a .zip
+        public void makeZip()
+        {
+            _status.Name = "Creating Zip";
+            _status.Progress = 25;
+            _status.OnProgess();
+
+            string[] paths = { selectedPath, "PlatinenGehäuse.zip" };
+            string zipPath = Path.Combine(paths);
+            System.IO.Compression.ZipFile.CreateFromDirectory(folderPath, zipPath);
+
+            _status.Progress = 100;
+            _status.Name = "Done";
+            _status.OnProgess();
+        }
+
+        //Initialization of the required variables
         private Status _status;
         private string _tempPath;
         private string _pathOben;

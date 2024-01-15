@@ -474,18 +474,19 @@ namespace GehäuseGenerator
 
         private void picScreenBoard_Paint(object sender, PaintEventArgs e)
         {
-
+            //rahmen für die screens
             ControlPaint.DrawBorder(e.Graphics, picScreenBoard.ClientRectangle, System.Drawing.Color.White, ButtonBorderStyle.Solid);
         }
 
         private void picScreenOben_Paint(object sender, PaintEventArgs e)
         {
-
+            //rahmen für die screens
             ControlPaint.DrawBorder(e.Graphics, picScreenOben.ClientRectangle, System.Drawing.Color.White, ButtonBorderStyle.Solid);
         }
 
         private void picScreenUnten_Paint(object sender, PaintEventArgs e)
         {
+            //rahmen für die screens
             ControlPaint.DrawBorder(e.Graphics, picScreenUnten.ClientRectangle, System.Drawing.Color.White, ButtonBorderStyle.Solid);
         }
 

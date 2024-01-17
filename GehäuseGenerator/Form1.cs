@@ -129,6 +129,8 @@ namespace GehäuseGenerator
                     return;
                 }
 
+                //Create both enclosure halfs and add all selected CutOuts to both
+
                 gehäuseOben = new Gehäuse(inventorApp, status, wanddicke * 0.1, mtoleranz * 0.1, etoleranz * 0.1, platine.BoardW, platine.BoardL, normteile.GetInsertHoleDia(platine.HoleDia * 10) * 0.1, platine.CornerRadius, platine.BoardH, platine.CompHeightTop, rundungsradius * 0.1, normteile.GetScrewHeadDia(platine.HoleDia * 10) * 0.1, normteile.GetScrewHeadHeight(platine.HoleDia * 10) * 0.1, true);
                 gehäuseUnten = new Gehäuse(inventorApp, status, wanddicke * 0.1, mtoleranz * 0.1, etoleranz * 0.1, platine.BoardW, platine.BoardL, normteile.GetScrewDiameter(platine.HoleDia * 10) * 0.1 + 0.06, platine.CornerRadius, platine.BoardH, platine.CompHeightBottom, rundungsradius * 0.1, normteile.GetScrewHeadDia(platine.HoleDia * 10) * 0.1, normteile.GetScrewHeadHeight(platine.HoleDia * 10) * 0.1, false);
                 foreach (CutOut cutOut in platine.CutOuts)
@@ -226,6 +228,8 @@ namespace GehäuseGenerator
 
         private void btnSelFile_Click(object sender, EventArgs e)
         {
+            //Get FilePath of PCB assembly
+
             speichern = new Speichern(status);
             string FileName = null;
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -243,6 +247,7 @@ namespace GehäuseGenerator
             }
             else
             {
+                //Open assembly and analyze, set comboboxes to Parts list
                 platine = new Platine(inventorApp, FilePath, status);
                 platine.Analyze();
                 cmbBoard.DataSource = platine.Parts;
@@ -262,6 +267,8 @@ namespace GehäuseGenerator
             status.Name = "Inventor starting";
             status.OnProgess();
 
+            //Start Inventor
+
             Type inventorAppType = System.Type.GetTypeFromProgID("Inventor.Application");
             inventorApp = System.Activator.CreateInstance(inventorAppType) as Inventor.Application;
             inventorApp.Visible = false;
@@ -276,6 +283,8 @@ namespace GehäuseGenerator
 
         private void btnAddCon(object sender, EventArgs e)
         {
+            //Add Connector CutOut
+
             if (platine.BoardL == 0)
             {
                 MessageBox.Show("Erst ein Board Auswählen!");
@@ -289,6 +298,8 @@ namespace GehäuseGenerator
 
         private void btnAddLed(object sender, EventArgs e)
         {
+            //Add Distplay/LED CutOut
+
             if (platine.BoardL == 0)
             {
                 MessageBox.Show("Erst ein Board Auswählen!");
@@ -311,49 +322,20 @@ namespace GehäuseGenerator
 
         private void btnConfirmBoard_Click(object sender, EventArgs e)
         {
+            //AnalyzeBoard show board mesurments
+
             platine.AnalyzeBoard(platine.Parts.ElementAt(cmbBoard.SelectedIndex));
             textBox6.Text = (platine.BoardW * 10).ToString("0.0") + "/" + (platine.BoardL * 10).ToString("0.0") + "/" + (platine.BoardH * 10).ToString("0.0");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-            //export button
-            //if (speichern.saveAs == 1)
-            //{
-                speichern.exportFiles();
-                baugruppeZusammenfuegen.packAndGo(speichern.getPathBaugruppe(), speichern.folderPathCAD);
-
-                switch (comboBox13.SelectedIndex)
-                {
-                    case 0:
-                        gehäuseOben.ExportToStl(speichern.getPathObenStl());
-                        gehäuseUnten.ExportToStl(speichern.getPathUntenStl());
-                        break;
-
-                    case 1:
-                        gehäuseOben.ExportToObj(speichern.getPathObenOBJ());
-                        gehäuseUnten.ExportToObj(speichern.getPathUntenOBJ());
-                        break;
-
-                    case 2:
-                        gehäuseOben.ExportToStep(speichern.getPathObenStp());
-                        gehäuseUnten.ExportToStep(speichern.getPathUntenStp());
-                        break;
-
-                    default:
-                        break;
-                }
-            
-            //}
-            //else
-            //{
-                //MessageBox.Show("Bitte Speicherort wählen.");
-            //}
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //Set Save directory Path
+
             speichern = new Speichern(status);
             FolderBrowserDialog diag = new FolderBrowserDialog();
             if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -504,5 +486,3 @@ namespace GehäuseGenerator
 
     }
 }
-    
-

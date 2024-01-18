@@ -15,10 +15,10 @@ namespace GehäuseGenerator
         {
             _inventorApp = inventorApp;
             _status = status;
-
             _status.Name = "Creating Assembly";
             _status.OnProgess();
-            //Baugruppe erstellen
+
+            //Creating Assembly
             _assemblyDocument = _inventorApp.Documents.Add(DocumentTypeEnum.kAssemblyDocumentObject, _inventorApp.GetTemplateFile(DocumentTypeEnum.kAssemblyDocumentObject)) as AssemblyDocument;
 
             _status.Name = "Done";
@@ -31,7 +31,7 @@ namespace GehäuseGenerator
             _status.Progress = 0;
             _status.OnProgess();
 
-            //Platzieren
+            //Placing PCB
             ComponentOccurrence platine = _assemblyDocument.ComponentDefinition.Occurrences.Add(filePath, positionMatrix);
 
             _status.Progress = 100;
@@ -45,13 +45,14 @@ namespace GehäuseGenerator
             _status.Progress = 0;
             _status.OnProgess();
 
+            //Generating Matrix
             Matrix positionMatrix = _inventorApp.TransientGeometry.CreateMatrix();
 
-            //Schieben
+            //Move 
             Vector trans = _inventorApp.TransientGeometry.CreateVector(0, 0, (zOffset / 2.0));
             positionMatrix.SetTranslation(trans);
 
-            //Platzieren
+            //Place
             ComponentOccurrence oberesGehäuse = _assemblyDocument.ComponentDefinition.Occurrences.Add(filePath, positionMatrix);
 
             _status.Progress = 100;
@@ -67,16 +68,16 @@ namespace GehäuseGenerator
 
             Matrix positionMatrix = _inventorApp.TransientGeometry.CreateMatrix();
 
-            //Drehen
+            //Rotate
             double angle = Math.PI;
             positionMatrix.GetCoordinateSystem(out Inventor.Point Origin, out Vector XAxis, out Vector YAxis, out Vector ZAxis);
             positionMatrix.SetToRotation(angle, XAxis, Origin);
 
-            //Schieben
+            //Move
             Vector trans = _inventorApp.TransientGeometry.CreateVector(0, 0, -(zOffset / 2.0));
             positionMatrix.SetTranslation(trans);
 
-            //Platzieren
+            //Place
             ComponentOccurrence unteresGehäuse = _assemblyDocument.ComponentDefinition.Occurrences.Add(filePath, positionMatrix);
 
             _status.Progress = 100;
@@ -92,7 +93,7 @@ namespace GehäuseGenerator
 
             Matrix positionMatrix = _inventorApp.TransientGeometry.CreateMatrix();
 
-            //Familie holen
+            //Get family of the screws
             AssemblyComponentDefinition asmDef = _assemblyDocument.ComponentDefinition;
             ContentTreeViewNode hexHeadNode = _inventorApp.ContentCenter.TreeViewTopNode.ChildNodes["Verbindungselemente"].ChildNodes["Schrauben"].ChildNodes["Rundkopf"];
             ContentFamily family = null;
@@ -108,6 +109,8 @@ namespace GehäuseGenerator
                     break;
                 }
             }
+
+            //Select screws based on the given diameter
             if (family != null)
             {
                 int zeile = 1;
@@ -151,18 +154,17 @@ namespace GehäuseGenerator
                 string memberFilename = family.CreateMember(zeile, out failureReason, out failureMessage, ContentMemberRefreshEnum.kRefreshOutOfDateParts);
 
 
-                //Drehen
+                //Rotate
                 double angle = -(Math.PI / 2);
                 positionMatrix.GetCoordinateSystem(out Inventor.Point Origin, out Vector XAxis, out Vector YAxis, out Vector ZAxis);
                 positionMatrix.SetToRotation(angle, YAxis, Origin);
 
-                //Schieben
+                //Move and place screw 1
                 Vector trans1 = _inventorApp.TransientGeometry.CreateVector(((breite / 2) - radius), ((länge / 2) - radius), -höheSchrauben);
                 positionMatrix.SetTranslation(trans1);
-
                 ComponentOccurrence s1 = asmDef.Occurrences.Add(memberFilename, positionMatrix);
 
-                //Schieben
+                //Move and place screw 2
                 Vector trans2 = _inventorApp.TransientGeometry.CreateVector(((breite / 2) - radius), -((länge / 2) - radius), -höheSchrauben);
                 positionMatrix.SetTranslation(trans2);
 
@@ -171,16 +173,14 @@ namespace GehäuseGenerator
 
                 ComponentOccurrence s2 = asmDef.Occurrences.Add(memberFilename, positionMatrix);
 
-                //Schieben
+                //Move and place screw 3
                 Vector trans3 = _inventorApp.TransientGeometry.CreateVector(-((breite / 2) - radius), ((länge / 2) - radius), -höheSchrauben);
                 positionMatrix.SetTranslation(trans3);
-
                 ComponentOccurrence s3 = asmDef.Occurrences.Add(memberFilename, positionMatrix);
 
-                //Schieben
+                //Move and place screw 4
                 Vector trans4 = _inventorApp.TransientGeometry.CreateVector(-((breite / 2) - radius), -((länge / 2) - radius), -höheSchrauben);
                 positionMatrix.SetTranslation(trans4);
-
                 ComponentOccurrence s4 = asmDef.Occurrences.Add(memberFilename, positionMatrix);
 
                 _status.Progress = 100;
@@ -195,6 +195,7 @@ namespace GehäuseGenerator
             _status.Progress = 0;
             _status.OnProgess();
 
+            //Saving the Assembly to temporary path
             _assemblyDocument.Update();
             _status.Progress = 50;
             _status.OnProgess();
@@ -212,6 +213,7 @@ namespace GehäuseGenerator
             _status.Progress = 0;
             _status.OnProgess();
 
+            //Set the design project
             string desktopPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
             PackAndGoComponent packAndGoComp = new PackAndGoComponent();
             Save(pathBaugruppe);
@@ -223,7 +225,7 @@ namespace GehäuseGenerator
             _status.Progress = 50;
             _status.OnProgess();
 
-            // Set the options
+            //Set the options
             packAndGo.SkipLibraries = false;
             packAndGo.SkipStyles = true;
             packAndGo.SkipTemplates = true;
@@ -231,13 +233,13 @@ namespace GehäuseGenerator
             packAndGo.KeepFolderHierarchy = true;
             packAndGo.IncludeLinkedFiles = true;
 
-            // Get the referenced files
+            //Get the referenced files
             packAndGo.SearchForReferencedFiles(out refFiles, out refMissFiles);
 
-            // Add the referenced files for package
+            //Add the referenced files for package
             packAndGo.AddFilesToPackage(refFiles);
 
-            // Start the pack and go to create the package
+            //Start the pack and go to create the package
             packAndGo.CreatePackage();
 
             _status.Progress = 100;
@@ -251,6 +253,7 @@ namespace GehäuseGenerator
             _status.Progress = 0;
             _status.OnProgess();
 
+            //Creating the camera
             Inventor.View view = _assemblyDocument.Views[1];
             Inventor.Camera camera = view.Camera;
             camera.Perspective = false;
@@ -258,6 +261,7 @@ namespace GehäuseGenerator
             _status.Progress = 75;
             _status.OnProgess();
 
+            //Setting camera perspective, fiting the camera to the Part and exporting picture
             camera.ViewOrientationType = ViewOrientationTypeEnum.kIsoTopRightViewOrientation;
             camera.Fit();
             camera.Apply();
@@ -275,6 +279,7 @@ namespace GehäuseGenerator
             _status.Progress = 0;
             _status.OnProgess();
 
+            //Creating the camera
             Inventor.View view = _assemblyDocument.Views[1];
             Inventor.Camera camera = view.Camera;
             camera.Perspective = false;
@@ -282,6 +287,7 @@ namespace GehäuseGenerator
             _status.Progress = 75;
             _status.OnProgess();
 
+            //Setting camera perspective, fiting the camera to the Part and exporting picture
             camera.ViewOrientationType = ViewOrientationTypeEnum.kIsoBottomRightViewOrientation;
             camera.Fit();
             camera.Apply();

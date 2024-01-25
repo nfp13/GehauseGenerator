@@ -182,7 +182,7 @@ namespace GehäuseGenerator
                             extrudeDefinition.SetDistanceExtent(_DW * 4, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
                             ExtrudeFeature extrudeFeature = _partComponentDefinition.Features.ExtrudeFeatures.Add(extrudeDefinition);
                         }
-                        else if (cutOut.XP - cutOut.XS / 2 <= -_BP / 2)
+                        else if (-cutOut.XP - cutOut.XS / 2 <= -_BP / 2)
                         {
                             face = _FindNamedFace("FlächeLinks");
                             PlanarSketch sketch = _partComponentDefinition.Sketches.Add(face, false);
@@ -214,7 +214,7 @@ namespace GehäuseGenerator
                             extrudeDefinition.SetDistanceExtent(_DW * 4, PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
                             ExtrudeFeature extrudeFeature = _partComponentDefinition.Features.ExtrudeFeatures.Add(extrudeDefinition);
                         }
-                        else if (cutOut.YP - cutOut.YS / 2 >= -_LP / 2)
+                        else if (-cutOut.YP - cutOut.YS / 2 >= -_LP / 2)
                         {
                             face = _FindNamedFace("FlächeVorne");
                             PlanarSketch sketch = _partComponentDefinition.Sketches.Add(face, false);
